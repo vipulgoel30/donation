@@ -1,8 +1,8 @@
-
-
+import { Link } from "react-router-dom";
+import Allngo from "./components/Ngo/Allngo";
 function App() {
   return (
-   <h1 className="bg-red-500">dkukd</h1>
+    <Link to="/ngos"><Allngo/></Link>
   );
 }
 
