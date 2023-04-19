@@ -45,7 +45,7 @@ export default function NavBarLanding() {
                     </a>
                     <Link to="/ngos">
                         <div className="hidden sm:block text-lg tracking-widest font-semibold  relative after:absolute after:content-[''] after:w-full after:-bottom-[.2rem]  after:-left-full after:h-[.2rem] after:hidden  after:bg-gradient-to-r after:from-gradient1a after:to-gradient1b hover:after:left-0 after:transition-all after:ease-in-out after:duration-500 hover:after:block hover:translate-x-1 ease-in-out duration-200 ">
-                            Ngos
+                            NGOs
                         </div>
                     </Link>
                     <a href="#testimonials">
