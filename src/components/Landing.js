@@ -15,11 +15,11 @@ const Landing = () => {
       <RegisterBannerLanding /> */}
 
       <div id="testimonials">
-        {/* <Testimonials /> */}
+        <Testimonials />
       </div>
       {/* <Register></Register> */}
       <div id="about">
-        {/* <About></About> */}
+        <About></About>
       </div>
       <Footer></Footer>
 
