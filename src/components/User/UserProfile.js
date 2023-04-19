@@ -36,7 +36,8 @@ export default function Profile() {
     );
     if (!success) return toast.error("Some error occurred...");
     setUserDataUpdated(true);
-    toast.success("Profile updated successfully!");
+    window.location.reload();
+    // toast.success("Profile updated successfully!");
   }
 
   useEffect(() => {
@@ -105,10 +106,10 @@ export default function Profile() {
                   <h1 className="text-xl sm:text-2xl font-bold tracking-wide">
                     {data?.name}
                   </h1>
-                  <h1 className="sm:hidden  font-light tracking-widest text-xs">
+                  <h1 className="sm:hidden  font-light tracking-widest text-sm">
                     Update is not possible in mobile browser
                   </h1>
-                  <h1 className="hidden md:block font-light tracking-widest text-xs">
+                  <h1 className="hidden md:block font-light tracking-widest text-sm">
                     Update you profile and personnel details
                   </h1>
                 </div>

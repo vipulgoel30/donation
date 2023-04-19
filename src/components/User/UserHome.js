@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import dummyImage from "../../images/dummy.webp";
 import { getAllEvents } from "../../firebase";
 import { useDataContext } from "../../context/ContextProvider";
+import { relativeTime } from "../../modules/time";
+import { sortEvents } from "../../modules/array";
 export default function UserHome() {
   document.querySelector("body").style.overflowX = "hidden";
 
@@ -26,7 +28,7 @@ export default function UserHome() {
                 Recent events
               </button>
             </div>
-            {events?.map(({ name, title, description, image, ngoImage, url, date }) => <div key={date} className="flex flex-col px-8 py-4  rounded-3xl shadow-xl w-full gap-6">
+            {events?.sort(sortEvents).map(({ name, title, description, image, ngoImage, url, date }) => <div key={date} className="flex flex-col px-8 py-4  rounded-3xl shadow-xl w-full gap-6">
               <div className="flex gap-6 items-center">
                 <img src={ngoImage || dummyImage} className="rounded-full w-16 h-16" />
                 <div className="flex flex-col p-1 gap-.5">
@@ -34,7 +36,7 @@ export default function UserHome() {
                     {name}
                   </div>
                   <div className="text-sm text-gray-500 tracking-wide">
-                    {Math.floor((Date.now() - date) / (60 * 60 * 1000))} hours
+                    {relativeTime(date)}
                   </div>
                 </div>
               </div>

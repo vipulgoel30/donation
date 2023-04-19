@@ -5,6 +5,8 @@ import { setEvent } from "../../firebase";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 import { useDataContext } from "../../context/ContextProvider";
+import { relativeTime } from "../../modules/time";
+import { sortEvents } from "../../modules/array";
 
 export default function Posts() {
   const [post, setPost] = useState("flex");
@@ -70,12 +72,12 @@ export default function Posts() {
                 Recent events
               </button>
             </div>
-            {data?.events?.map(({ title, description, image, url, date }) => (
+            {data?.events?.sort(sortEvents).map(({ title, description, image, url, date }) => (
               <div
                 key={date}
                 className="flex flex-col px-8 py-4  rounded-3xl shadow-xl w-full gap-6 "
               >
-                <a href={url} target="_blank">
+                <a href={url} target="_blank" rel="noreferrer">
                   <div className="flex gap-6 items-center">
                     <img
                       src={data?.image || dummyImage}
@@ -86,8 +88,7 @@ export default function Posts() {
                         {data?.name}
                       </div>
                       <div className="text-sm text-gray-500 tracking-wide">
-                        {Math.floor((Date.now() - date) / (60 * 60 * 1000))}{" "}
-                        hours
+                        {relativeTime(date)}
                       </div>
                     </div>
                   </div>
@@ -103,9 +104,8 @@ export default function Posts() {
             ))}
           </div>
           <div
-            className={`w-full sm:w-2/3 shadow-[-4px_0px_24px_rgba(0,0,0,.4)]  shadow-slate-300 rounded-3xl px-8 py-8 pt-16  flex-col gap-8 text-gray-600 relative ${
-              post === "flex" ? "hidden" : "flex"
-            }`}
+            className={`w-full sm:w-2/3 shadow-[-4px_0px_24px_rgba(0,0,0,.4)]  shadow-slate-300 rounded-3xl px-8 py-8 pt-16  flex-col gap-8 text-gray-600 relative ${post === "flex" ? "hidden" : "flex"
+              }`}
           >
             <div
               className="absolute top-7 right-10"
