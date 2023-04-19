@@ -3,7 +3,7 @@ import { lazy, Suspense } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import ContextProvider from "./context/ContextProvider";
 import Loader from "./components/Loader";
-// import { ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import NavBarAllNgo from "./components/Ngo/AllNgo/NavBarAllNgo";
 import useAuth from "./hooks/useAuth";
@@ -61,12 +61,12 @@ function App() {
             <Route path="/ngo" element={<Comp />} /> */}
         </Routes>
       </ContextProvider>
-      {/* <ToastContainer
+      <ToastContainer
         position="bottom-right"
         pauseOnFocusLoss={false}
         pauseOnHover={false}
         autoClose={2000}
-      /> */}
+      />
     </Suspense>
   );
 }
