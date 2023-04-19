@@ -62,7 +62,7 @@ const NavBarNgo = () => {
                 5
               </span>
             </Link>
-            <Link exact to="/ngo/profile">
+            <Link to="/ngo/profile">
               <img
                 src={data?.image || dummyImage}
                 className="w-14 h-14 rounded-full "

@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { useDataContext } from "../../context/ContextProvider";
 import { acceptDonation, getAllDonations } from "../../firebase";
 import useAuth from "../../hooks/useAuth";
+import dummyImage from "./../../images/dummy.webp";
 
 const Dashboard = () => {
   const [dashboardAnimation, setDashboardAnimation] = useState("");
@@ -13,18 +14,20 @@ const Dashboard = () => {
   const { ngo } = useAuth();
 
   useEffect(() => {
+    if (!data) return
     setTimeout(() => {
       setDashboardAnimation("hidden");
     }, 1000);
-    getAllDonations(data?.pincode).then(({ success, donations }) => {
+    getAllDonations(data.pincode).then(({ success, donations }) => {
       if (success) setDonations(donations);
     });
-  }, []);
+  }, [data]);
 
   async function accept(uid, id) {
     const { success } = await acceptDonation(uid, id, ngo);
     if (!success) return toast.error("Some error occured...");
     toast.success("Donation accepted!");
+    window.location.reload();
   }
 
   return (
@@ -67,12 +70,12 @@ const Dashboard = () => {
               password,
             }) => (
               <div
-                key={uid}
+                key={id}
                 className="shadow-[0_1px_16px_2px_rgba(0,0,0,.2)] rounded-xl  px-2 sm:px-8 py-6 flex  flex-col gap-6 bg-slate-50 hover:bg-gray-100 hover:text-[#2dc1e4] hover:border-[#2dc1e4] hover:border-2 transition-all duration-200 ease-in-out "
               >
                 <div className="flex gap-10">
                   <img
-                    src={image}
+                    src={image || dummyImage}
                     className="w-24 h-24  rounded-full shadow-2xl"
                   />
                   <div className="flex flex-col gap-1">

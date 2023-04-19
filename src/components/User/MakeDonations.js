@@ -17,7 +17,8 @@ const MakeDonations = () => {
         const { success } = await initiateDonation(user, description.current.value)
         if (!success) return toast.error('Some error occurred...')
         setUserDataUpdated(true)
-        toast.success('Donation initiated')
+        window.location.href = '/user/donations'
+        // toast.success('Donation initiated')
     }
 
     useEffect(() => {

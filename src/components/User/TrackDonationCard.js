@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -18,14 +19,14 @@ export default function TrackDonationCard({ id, status, description, ngoid, date
 
   useEffect(() => {
     getNgoData(ngoid).then(({ success, data }) => { if (success) setData(data) })
-  })
+  }, [])
 
   async function submit(event) {
     event.preventDefault()
     const { success, error } = await completeDonation(user, id, password.current.value)
     if (!success) return toast.error(error)
     setUserDataUpdated(true)
-    toast.success('Donation initiated')
+    toast.success('Donation completed')
   }
 
   return (

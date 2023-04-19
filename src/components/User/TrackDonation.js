@@ -1,15 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDataContext } from "../../context/ContextProvider";
 import TrackDonationCard from "./TrackDonationCard";
 
 const TrackDonation = () => {
-  const abc = useDataContext()
   const { userData } = useDataContext()
   const donations = userData?.donations
-
-  useEffect(() => {
-    console.log(abc)
-  }, [abc])
 
   return (
     <div className="max-w-6xl mx-16 my-10 xl:mx-auto flex gap-4 xl:gap-16 ">
@@ -26,8 +21,9 @@ const TrackDonation = () => {
         </div>
       </div>
       <div className="flex flex-col w-full xl:w-2/3 gap-10">
-        {donations?.map(donation => <TrackDonationCard
-          key={donation.id}
+        {donations?.map(({id, ngo, ...donation}) => <TrackDonationCard
+          key={id}
+          ngoid={ngo}
           {...donation}
         />)}
       </div>
