@@ -21,7 +21,7 @@ const Footer = () => {
                             < Logo dimension={4} />
                             <p className='font-bold text-xl '>DoNation</p>
                         </div>
-                        <p className='block'>DoNations is an independent Not for Profit Organisation founded in 2023 by college students in order to do something valuable and good for the society. </p>
+                        <p className='block text-justify'>DoNations is an independent Not for Profit Organisation founded in 2023 by college students in order to do something valuable and good for the society. </p>
                     </div>
                 </Link>
 
@@ -53,19 +53,19 @@ const Footer = () => {
                     <h1 className='font-bold text-xl'>CONNECT</h1>
                     <div className='flex gap-3 '>
                         <a href="https://www.instagram.com/">
-                           <div className={`rounded-md sm:rounded-lg relative instagram transition-all duration-500 hover:scale-110 w-[2rem] h-[2rem] sm:w-[1.2rem] sm-h-[1.2rem] md:w-[1.6rem] md:h-[1.6rem] `}  >
+                           <div className={`rounded-md sm:rounded-lg relative mt-1 instagram transition-all duration-500 hover:scale-110 w-[2rem] h-[2rem] sm:w-[1.2rem] sm-h-[1.2rem] md:w-[1.6rem] md:h-[1.6rem] `}  >
     <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 border-[1.5px] md:border-2 rounded-full' ></div>
     <div className='absolute top-[20%] right-[15%] w-[12%] h-[12%] bg-white rounded-full'></div>
   </div >
                         </a>
-                        <a href="https://www.instagram.com/">
-                            <AiOutlineTwitter className="text-4xl text-gradient1b cursor-pointer" />
+                        <a href="https://www.twitter.com/">
+                            <AiOutlineTwitter className="text-4xl text-gradient1b cursor-pointer transition-all duration-500 hover:scale-110" />
                         </a>
-                        <a href="https://twitter.com/">
-                            <FaYoutube className="text-4xl text-red-600 cursor-pointer" />
+                        <a href="https://youtube.com/">
+                            <FaYoutube className="text-4xl text-red-600 cursor-pointer transition-all duration-500 hover:scale-110" />
                         </a>
                         <a href="https://in.linkedin.com/">
-                            <FaLinkedinIn className="text-4xl text-blue-600 cursor-pointer" />
+                            <FaLinkedinIn className="text-4xl text-blue-600 cursor-pointer transition-all duration-500 hover:scale-110" />
                         </a>
                     </div>
                 </div>

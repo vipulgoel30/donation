@@ -9,7 +9,7 @@ import imageFive from "./../images/pratham.webp";
 
 const Testimonials = () => {
   return (
-    <div className="flex gap-14 flex-col mt-20 border-b-2 pb-12 font-cabin">
+    <div className="flex gap-14 flex-col mt-20 border-b-2 pb-12">
       <h1 className="text-2xl md:text-4xl font-bold text-center">
         As Recognised By
       </h1>
