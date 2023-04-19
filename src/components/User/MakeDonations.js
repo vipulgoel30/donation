@@ -3,7 +3,7 @@ import { toast } from 'react-toastify'
 import { useDataContext } from '../../context/ContextProvider'
 import { initiateDonation } from '../../firebase'
 import useAuth from '../../hooks/useAuth'
-import about1 from '../../images/about1.png'
+// import about1 from '../../images/about1.png'
 import { useNavigate } from 'react-router-dom'
 
 const MakeDonations = () => {
@@ -33,7 +33,7 @@ const MakeDonations = () => {
                 <div className='p-12 bg-gradient-to-r from-gradient1a to-gradient1b flex  justify-center'>
                     <div className='flex mx-auto justify-center items-center'>
                         <div className='p-2 w-1/3'>
-                            <img className='rounded-full' src={about1} alt="" />
+                            <img className='rounded-full' src="https://images.pexels.com/photos/15591053/pexels-photo-15591053.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="" />
                         </div>
                         <div className='p-8 items-center w-1/2'>
                             <h1 className='font-bold text-xl m-1'>Please provide the following information for donations:</h1>
