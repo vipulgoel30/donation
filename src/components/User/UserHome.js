@@ -28,14 +28,14 @@ export default function UserHome() {
                 Recent events
               </button>
             </div>
-            {events?.sort(sortEvents).map(({ name, title, description, image, ngoImage, url, date }) => <div key={date} className="flex flex-col px-8 py-4  rounded-3xl shadow-xl w-full gap-6">
+            {events?.sort(sortEvents).map(({ name, title, description, image, ngoImage, url, date }) => <div key={date} className="flex flex-col px-8 py-4  rounded-3xl shadow-lg w-full gap-6">
               <div className="flex gap-6 items-center">
                 <img src={ngoImage || dummyImage} className="rounded-full w-16 h-16" />
                 <div className="flex flex-col p-1 gap-.5">
-                  <div className="text-2xl tracking-wider text-gray-800 font-extralight">
+                  <div className="text-2xl text-gray-800 font-extralight">
                     {name}
                   </div>
-                  <div className="text-sm text-gray-500 tracking-wide">
+                  <div className="text-sm text-gray-500">
                     {relativeTime(date)}
                   </div>
                 </div>
@@ -43,7 +43,7 @@ export default function UserHome() {
               <div>
                 <img src={image || dummyImage} className="w-full h-64"></img>
               </div>
-              <div className="font-semibold text-2xl pl-3 font-mono">
+              <div className="font-semibold text-2xl">
                 {title}
               </div>
               <div className="font-light leading-7 -mt-3">
@@ -52,9 +52,9 @@ export default function UserHome() {
             </div>)}
           </div>
           <div className="hidden sm:flex flex-col  w-1/3 gap-8">
-            <div className="flex flex-col justify-center items-center w-full p-6 pt-12 rounded-2xl shadow-2xl gap-4 relative">
-              <img src={data?.image || dummyImage} className="rounded-full shadow-xl w-20 h-20" />
-              <div className="text-2xl font-medium tracking-wide text-gray-700">
+            <div className="flex flex-col justify-center items-center w-full p-6 pt-12 rounded-2xl shadow-lg gap-4 relative">
+              <img src={data?.image || dummyImage} className="rounded-full shadow-lg w-20 h-20" />
+              <div className="text-2xl font-medium text-gray-700">
                 {data?.name}
               </div>
             </div>

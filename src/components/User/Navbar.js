@@ -2,6 +2,7 @@ import React from "react";
 import Logo from "../Logo";
 import ham from "../../images/ham.png";
 import User from "../../images/user-interface.png";
+import dummyImage from '../../images/dummy.webp'
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -29,29 +30,31 @@ const Navbar = () => {
         <div className="flex justify-between sm:justify-start md:justify-between ">
           <ul className="md:flex md:items-center z-[-1] md:z-auto md:static absolute w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500">
             <Link to="/">
-              <li className="mx-4 -my-2 sm:m-2 md:mx-4 md:-my-2 font-semibold hover:underline cursor-pointer">
+              <li className="hidden lg:px-2 sm:block text-lg font-semibold  relative after:absolute after:content-[''] after:w-full after:-bottom-[.2rem]  after:-left-full after:h-[.2rem] after:hidden  after:bg-gradient-to-r after:from-gradient1a after:to-gradient1b hover:after:left-0 after:transition-all after:ease-in-out after:duration-500 hover:after:block hover:translate-x-0.5 ease-in-out duration-500 ">
                 Dashboard
               </li>
             </Link>
             <Link to="user/money">
-              <li className="mx-4 -my-2 sm:m-2 md:mx-4 md:-my-2 font-semibold hover:underline cursor-pointer">
+              <li className="hidden lg:px-2 sm:block text-lg font-semibold  relative after:absolute after:content-[''] after:w-full after:-bottom-[.2rem]  after:-left-full after:h-[.2rem] after:hidden  after:bg-gradient-to-r after:from-gradient1a after:to-gradient1b hover:after:left-0 after:transition-all after:ease-in-out after:duration-500 hover:after:block hover:translate-x-0.5 ease-in-out duration-500 ">
                 Donate Money
               </li>
             </Link>
             <Link to="user/donate">
-              <li className="mx-4 -my-2 sm:m-2 md:mx-4 md:-my-2 font-semibold hover:underline cursor-pointer">
+              <li className="hidden lg:px-2 sm:block text-lg font-semibold  relative after:absolute after:content-[''] after:w-full after:-bottom-[.2rem]  after:-left-full after:h-[.2rem] after:hidden  after:bg-gradient-to-r after:from-gradient1a after:to-gradient1b hover:after:left-0 after:transition-all after:ease-in-out after:duration-500 hover:after:block hover:translate-x-0.5 ease-in-out duration-500 ">
                 Other Donations
               </li>
             </Link>
             <Link to="user/donations">
-              <li className="mx-4 -my-2 sm:m-2 md:mx-4 md:-my-2 font-semibold hover:underline cursor-pointer">
+              <li className="hidden lg:px-2 sm:block text-lg font-semibold  relative after:absolute after:content-[''] after:w-full after:-bottom-[.2rem]  after:-left-full after:h-[.2rem] after:hidden  after:bg-gradient-to-r after:from-gradient1a after:to-gradient1b hover:after:left-0 after:transition-all after:ease-in-out after:duration-500 hover:after:block hover:translate-x-0.5 ease-in-out duration-500 ">
                 Track Donation
               </li>
             </Link>
             <Link to="user/profile">
-              <li className="mx-4 -my-2 sm:m-2 md:mx-4 md:-my-2 font-semibold hover:underline cursor-pointer">
-                <img src={User} className="w-6" alt="" />
-              </li>
+                <img
+                src={ dummyImage}
+                className="w-12 h-12 rounded-full mx-4 cursor-pointer"
+                alt="Ngo logo"
+              />
             </Link>
           </ul>
         </div>
