@@ -43,13 +43,13 @@ export default function TrackDonationCard({ id, status, description, ngoid, date
           Accepting NGO
         </div>
 
-        <Link to={`/ngo/${ngoid}`} className="text-2xl text-gray-600 ">
-          {capitalise(data?.name)}
+        <Link to={ngoid ? `/ngo/${ngoid}` : '/user/donations'} className="text-2xl text-gray-600 ">
+          {capitalise(data?.name || 'NA')}
         </Link>
       </div>
       <div className="flex flex-col sm:flex-row  gap-4">
         <div className={` font-bold text-xl font-mono text-${color}-400`}>
-          {description}
+          Description
         </div>
         <div className="text-xl">{capitalise(description)}</div>
       </div>
