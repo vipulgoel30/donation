@@ -21,7 +21,7 @@ export default function NavBarAllNgo() {
 
     return (
         <>
-            <div className="z-50 bg-white h-fit flex drop-shadow-lg justify-between  items-center pl-6 sm:pl-8 pr-6 sm:pr-8 py-3 sticky top-0">
+            <div className="z-50 bg-white h-fit flex justify-between  items-center pl-6 sm:pl-8 pr-6 sm:pr-8 py-3 sticky top-0">
                 <Link to="/">
                     <div className="flex items-center gap-2 sm:gap-3 ">
 

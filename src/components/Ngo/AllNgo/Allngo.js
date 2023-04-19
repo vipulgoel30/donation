@@ -75,7 +75,7 @@ const Allngo = () => {
       <div
         className={`${
           dashboardAnimation === "" ? "hidden" : ""
-        }  mt-24 sm:mt-8 mx-2 xsm:mx-4 sm:mx-8 mb-12`}
+        }  mt-8 sm:mt-8 mx-2 xsm:mx-4 sm:mx-8 mb-12`}
       >
         <div className="px-2 xsm:px-3 sm:px-6 md:px-12 grid xlg:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 gap-12 ">
           {ngos?.map(({ uid, name, image, mobile, description },index) => (
