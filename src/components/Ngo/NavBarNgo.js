@@ -16,7 +16,7 @@ const NavBarNgo = () => {
           <div>
             <Link to="/ngo" className="flex items-center gap-4">
               <Logo dimension={2} loader={false} />
-              <h1
+              {/* <h1
                 className="text-4xl font-mono italic text-transparent bg-clip-text bg-gradient-to-t from-colorPrimary to-colorSecondary hidden lg:block"
                 style={{
                   wordSpacing: ".1rem",
@@ -24,26 +24,31 @@ const NavBarNgo = () => {
                 }}
               >
                 DoNation
-              </h1>
+              </h1> */}
+              <p className="font-bold text-xl hidden xxsm:block">
+                DoNation
+              </p>
             </Link>
           </div>
           <div className="flex justify-center items-center gap-8  ">
             <Link
               to="/ngo"
-              className="hidden sm:block text-xl tracking-widest font-semibold uppercase relative  after:absolute after:content-[''] after:w-full  after:-bottom-[.2rem]  after:-left-full after:h-[.2rem] after:hidden  after:bg-gradient-to-r after:from-[#2dc1e4] after:to-[#e8ecc7] hover:after:left-0 after:transition-all after:ease-in-out after:duration-500 hover:after:block hover:translate-x-1 hover:ease-in-out hover:duration-200"
-            >
+            //   className="hidden sm:block text-xl tracking-widest font-semibold uppercase relative  after:absolute after:content-[''] after:w-full  after:-bottom-[.2rem]  after:-left-full after:h-[.2rem] after:hidden  after:bg-gradient-to-r after:from-[#2dc1e4] after:to-[#e8ecc7] hover:after:left-0 after:transition-all after:ease-in-out after:duration-500 hover:after:block hover:translate-x-1 hover:ease-in-out hover:duration-200"
+            // >
+            className="hidden sm:block text-lg tracking-widest font-semibold  relative after:absolute after:content-[''] after:w-full after:-bottom-[.2rem]  after:-left-full after:h-[.2rem] after:hidden  after:bg-gradient-to-r after:from-gradient1a after:to-gradient1b hover:after:left-0 after:transition-all after:ease-in-out after:duration-500 hover:after:block hover:translate-x-0.5 ease-in-out duration-500 ">
               Home
             </Link>
             <Link
               to="/ngo/dashboard"
-              className=" hidden sm:block text-xl tracking-widest font-semibold uppercase relative  after:absolute after:content-[''] after:w-full  after:-bottom-[.2rem]  after:-left-full after:h-[.2rem] after:hidden  after:bg-gradient-to-r after:from-[#2dc1e4] after:to-[#e8ecc7] hover:after:left-0 after:transition-all after:ease-in-out after:duration-500 hover:after:block hover:translate-x-1 hover:ease-in-out hover:duration-200 "
-            >
+              // className=" hidden sm:block text-xl tracking-widest font-semibold uppercase relative  after:absolute after:content-[''] after:w-full  after:-bottom-[.2rem]  after:-left-full after:h-[.2rem] after:hidden  after:bg-gradient-to-r after:from-[#2dc1e4] after:to-[#e8ecc7] hover:after:left-0 after:transition-all after:ease-in-out after:duration-500 hover:after:block hover:translate-x-1 hover:ease-in-out hover:duration-200 "
+            // >
+            className="hidden sm:block text-lg tracking-widest font-semibold  relative after:absolute after:content-[''] after:w-full after:-bottom-[.2rem]  after:-left-full after:h-[.2rem] after:hidden  after:bg-gradient-to-r after:from-gradient1a after:to-gradient1b hover:after:left-0 after:transition-all after:ease-in-out after:duration-500 hover:after:block hover:translate-x-0.5 ease-in-out duration-500 ">
               Dashboard
             </Link>
-            <Link to="/ngo/dashboard" className=" relative ">
+            <Link to="/ngo/dashboard" className=" relative">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-8 h-8 animate-[ring_1s_ease-out_infinite] "
+                className="w-6 h-6 animate-[ring_1s_ease-out_infinite] "
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -56,7 +61,7 @@ const NavBarNgo = () => {
                 />
               </svg>
               <span
-                className="absolute -top-2 right-0 bg-red-700 text-white px-[.35rem] py-[.1rem] rounded-full text-[.7rem] animate-pulse
+                className="absolute -top-2 -right-1 bg-red-700 text-white px-[.4rem] py-[.1rem] rounded-full text-[.55rem] animate-pulse
             "
               >
                 5
@@ -65,7 +70,7 @@ const NavBarNgo = () => {
             <Link to="/ngo/profile">
               <img
                 src={data?.image || dummyImage}
-                className="w-14 h-14 rounded-full "
+                className="w-12 h-12 rounded-full "
                 alt="Ngo logo"
               ></img>
             </Link>

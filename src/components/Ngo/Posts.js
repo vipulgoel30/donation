@@ -39,7 +39,7 @@ export default function Posts() {
         Welcome back to DoNation
       </div> */}
       <div
-        className="fixed bottom-6 right-14 p-3  bg-gradient-to-r from-[rgba(143,198,253,.8)] to-[rgba(224,196,253,.8)] hover:from-[rgba(143,198,253,1)] hover:to-[rgba(224,196,253,1)] rounded-full flex items-center justify-center"
+        className="fixed bottom-6 right-14 p-3 font-poppins bg-gradient-to-r from-[rgba(143,198,253,.8)] to-[rgba(224,196,253,.8)] hover:from-[rgba(143,198,253,1)] hover:to-[rgba(224,196,253,1)] rounded-full flex items-center justify-center"
         title="New Post"
         onClick={() => {
           setPost("hidden");
@@ -84,10 +84,10 @@ export default function Posts() {
                       className="rounded-full w-16 h-16"
                     />
                     <div className="flex flex-col p-1 gap-.5">
-                      <div className="text-2xl tracking-wider text-gray-800 font-extralight">
+                      <div className="text-2xl text-gray-800 font-extralight">
                         {data?.name}
                       </div>
-                      <div className="text-sm text-gray-500 tracking-wide">
+                      <div className="text-sm text-gray-500">
                         {relativeTime(date)}
                       </div>
                     </div>
@@ -96,7 +96,7 @@ export default function Posts() {
                     <img src={image} className="w-full h-64"></img>
                   </div>
                 </a>
-                <div className="font-semibold text-2xl pl-3 font-mono">
+                <div className="font-semibold text-2xl pl-3">
                   {title}
                 </div>
                 <div className="font-light leading-7 -mt-3">{description}</div>
@@ -104,7 +104,7 @@ export default function Posts() {
             ))}
           </div>
           <div
-            className={`w-full sm:w-2/3 shadow-[-4px_0px_24px_rgba(0,0,0,.4)]  shadow-slate-300 rounded-3xl px-8 py-8 pt-16  flex-col gap-8 text-gray-600 relative ${post === "flex" ? "hidden" : "flex"
+            className={`w-full sm:w-2/3 shadow-[-4px_0px_24px_rgba(0,0,0,.2)]  shadow-slate-300 rounded-3xl px-8 py-8 pt-16  flex-col gap-8 text-gray-600 relative ${post === "flex" ? "hidden" : "flex"
               }`}
           >
             <div
@@ -128,13 +128,13 @@ export default function Posts() {
                 />
               </svg>
             </div>
-            <h1 className="text-3xl font-serif  font-thin tracking-wide">
+            <h1 className="text-3xl font-thin">
               New events
             </h1>
             <form onSubmit={submit} className="flex flex-col gap-8 w-full">
               <div className="w-full">
                 <input
-                  className={`w-full px-6 py-2 text-lg shadow-[0px_0px_12px_rgba(0,0,0,.2)]  bg-gray-100 rounded-lg outline-4 outline-gradient1b`}
+                  className={`w-full px-4 py-2 text-lg shadow-[0px_0px_2px_rgba(0,0,0,.2)]  bg-gray-100 rounded-lg outline-4 outline-gradient1b`}
                   type="text"
                   placeholder="Event Name"
                   required
@@ -145,7 +145,7 @@ export default function Posts() {
               <div className="w-full">
                 <textarea
                   rows={3}
-                  className={`w-full px-6 py-2 text-lg shadow-[0px_0px_12px_rgba(0,0,0,.2)]  bg-gray-100 rounded-lg outline-4 outline-gradient1b`}
+                  className={`w-full px-4 py-2 text-lg shadow-[0px_0px_2px_rgba(0,0,0,.2)]  bg-gray-100 rounded-lg outline-4 outline-gradient1b`}
                   type="text"
                   placeholder="Event description"
                   required
@@ -154,7 +154,7 @@ export default function Posts() {
               </div>
               <div className="w-full">
                 <input
-                  className={`w-full px-6 py-2 text-lg shadow-[0px_0px_12px_rgba(0,0,0,.2)]  bg-gray-100 rounded-lg outline-4 outline-gradient1b`}
+                  className={`w-full px-4 py-2 text-lg shadow-[0px_0px_2px_rgba(0,0,0,.2)]  bg-gray-100 rounded-lg outline-4 outline-gradient1b`}
                   type="text"
                   placeholder="Event banner image url"
                   required
@@ -163,7 +163,7 @@ export default function Posts() {
               </div>
               <div className="w-full">
                 <input
-                  className={`w-full px-6 py-2 text-lg shadow-[0px_0px_12px_rgba(0,0,0,.2)]  bg-gray-100 rounded-lg outline-4 outline-gradient1b`}
+                  className={`w-full px-4 py-2 text-lg shadow-[0px_0px_2px_rgba(0,0,0,.2)]  bg-gray-100 rounded-lg outline-4 outline-gradient1b`}
                   type="text"
                   placeholder="Event url"
                   ref={url}
@@ -171,8 +171,9 @@ export default function Posts() {
               </div>
               <button
                 type="submit"
-                className="bg-gradient-to-r from-gradient1a to-gradient1b text-white py-3 text-3xl tracking-widest font-mono uppercase rounded-3xl hover:-translate-y-1 transition-all duration-200 hover:scale-[1.01] "
-              >
+              //   className="bg-gradient-to-r from-gradient1a to-gradient1b py-3 text-3xl rounded-3xl hover:-translate-y-1 transition-all duration-200 hover:scale-[1.01] "
+              // >
+                className="font-semibold inline-block bg-gradient-to-r from-gradient1a to-gradient1b border rounded-lg px-4 py-2 m-2">
                 Submit
               </button>
             </form>
@@ -183,7 +184,7 @@ export default function Posts() {
                 src={data?.image || dummyImage}
                 className="rounded-full shadow-xl w-20 h-20"
               />
-              <div className="text-2xl font-medium tracking-wide text-gray-700">
+              <div className="text-2xl font-medium text-gray-700">
                 {data?.name}
               </div>
             </div>

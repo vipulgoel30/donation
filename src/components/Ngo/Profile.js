@@ -4,6 +4,7 @@ import { setNgoData } from "../../firebase";
 import useAuth from "../../hooks/useAuth";
 import LogOut from "./LogOut";
 import dummyImage from "../../images/dummy.webp";
+import bgImage from "./bg-image.jpg";
 import { toast } from "react-toastify";
 import { useDataContext } from "../../context/ContextProvider";
 
@@ -59,21 +60,19 @@ function Profile(props) {
       <div className={`${page === "logout" ? "" : "hidden"}`}>
         <LogOut />
       </div>
-      <div className="mb-10">
+      <div className="mb-10 font-poppins">
         <div className="max-w-7xl  2xl:mx-auto mx-12 mt-8 ">
           <h1
-            className={`text-3xl font-mono ${
-              props.type === "public" ? "hidden" : ""
-            }`}
+            className={`text-3xl font-bold ${props.type === "public" ? "hidden" : ""
+              }`}
           >
             Settings
           </h1>
           <div className="flex flex-col sm:flex-row gap-12 sm:gap-28 mt-8">
-            <div className="flex flex-row sm:flex-col  gap-5 tracking-wider">
+            <div className="flex flex-row sm:flex-col  gap-5 ">
               <div
-                className={`text-xl cursor-pointer ${
-                  page === "profile" ? "font-bold tracking-widest text-2xl" : ""
-                }`}
+                className={`text-xl cursor-pointer ${page === "profile" ? "font-bold text-2xl" : ""
+                  }`}
                 onClick={() => {
                   setpage("profile");
                 }}
@@ -81,13 +80,11 @@ function Profile(props) {
                 Profile
               </div>
               <div
-                className={`hidden sm:block text-xl cursor-pointer ${
-                  props.type === "public" ? "hidden" : ""
-                } ${
-                  page === "password"
-                    ? "font-bold tracking-widest text-2xl"
+                className={`hidden sm:block text-xl cursor-pointer ${props.type === "public" ? "hidden" : ""
+                  } ${page === "password"
+                    ? "font-bold text-2xl"
                     : ""
-                }`}
+                  }`}
                 onClick={() => {
                   setpage("password");
                 }}
@@ -95,11 +92,9 @@ function Profile(props) {
                 Password
               </div>
               <div
-                className={`text-xl cursor-pointer ${
-                  props.type === "public" ? "hidden" : ""
-                } ${
-                  page === "logout" ? "font-bold tracking-widest text-2xl" : ""
-                }`}
+                className={`text-xl cursor-pointer ${props.type === "public" ? "hidden" : ""
+                  } ${page === "logout" ? "font-bold text-2xl" : ""
+                  }`}
                 onClick={() => {
                   setpage("logout");
                 }}
@@ -107,41 +102,39 @@ function Profile(props) {
                 Logout
               </div>
             </div>
-            <div className="w-full ">
-              <div className="h-36 rounded-tl-3xl w-full bg-gray-200 relative ">
+            <div className="w-full -mt-12">
+              <img className="h-36 rounded-t-3xl w-full bg-gray-200 object-cover" src={bgImage} alt="" />
+              <div className="">
                 <img
                   src={data?.image || dummyImage}
                   alt="Ngo Logo"
-                  className="absolute rounded-full w-28 h-28 top-[85%] left-8"
-                ></img>
-                <div className="absolute top-full left-44 mt-4 flex flex-col gap-1">
-                  <h1 className="text-xl sm:text-2xl font-bold tracking-wide">
+                  className="absolute rounded-full w-28 h-28 mt-4 left-72"
+                />
+                <div className="absolute left-[30rem] mt-20 flex flex-col gap-1">
+                  <h1 className="text-xl sm:text-2xl font-bold ">
                     {data?.name}
                   </h1>
-                  <h1 className="sm:hidden  font-light tracking-widest text-sm">
+                  <h1 className="sm:hidden  font-light text-sm">
                     Update is not possible in mobile browser
                   </h1>
-                  <h1 className="hidden md:block font-light tracking-widest text-sm">
-                    Update you profile and personnel details
+                  <h1 className="hidden md:block font-light justify-items-end lg:ml-80 text-xl">
+                    Update your profile and personal details
                   </h1>
                 </div>
               </div>
               <form
                 onSubmit={submit}
-                className={`gap-10 mt-36 w-full flex-col relative ${
-                  page === "profile" ? "flex" : "hidden"
-                }`}
+                className={`gap-10 mt-36 w-full flex-col relative ${page === "profile" ? "flex" : "hidden"
+                  }`}
               >
                 <div
-                  className={`hidden sm:flex absolute -top-36 right-0 mt-4  gap-4 items-center ${
-                    props.type === "public" ? "hidden" : ""
-                  }`}
+                  className={`hidden sm:flex absolute -top-36 right-0 mt-4  gap-4 items-center ${props.type === "public" ? "hidden" : ""
+                    }`}
                 >
                   <button
                     type="button"
-                    className={`bg-gray-200 text-black font-semibold px-4 py-2 rounded-xl ${
-                      edit ? "hidden" : ""
-                    }`}
+                    className={`bg-gray-200 text-black font-semibold px-4 py-2 rounded-xl ${edit ? "hidden" : ""
+                      }`}
                     onClick={() => {
                       setEdit(true);
                     }}
@@ -158,17 +151,16 @@ function Profile(props) {
                     {edit ? "Update" : "Save Changes"}
                   </button>
                 </div>
-                <div className="flex flex-col sm:flex-row gap-6 sm:gap-12 w-full ">
-                  <div className="text-xl tracking-wide font-medium w-full sm:w-1/2">
+                <div className="flex flex-col mt-4 sm:flex-row gap-6 sm:gap-12 w-full ">
+                  <div className="text-xl font-medium w-full sm:w-1/2">
                     Organisation Name
                   </div>
                   <div className="w-full">
                     <input
                       disabled={edit}
                       ref={name}
-                      className={`w-full px-6 py-2 text-lg ${
-                        edit ? "text-gray-600" : ""
-                      }  bg-gray-100 rounded-lg`}
+                      className={`w-full px-6 py-2 text-lg ${edit ? "text-gray-600" : ""
+                        }  bg-gray-100 rounded-lg`}
                       type="text"
                       required={true}
                       minLength={1}
@@ -177,25 +169,24 @@ function Profile(props) {
                   </div>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-6 sm:gap-12 w-full ">
-                  <div className="text-xl tracking-wide font-medium w-full sm:w-1/2">
+                  <div className="text-xl font-medium w-full sm:w-1/2">
                     Website
                   </div>
                   <div className="w-full">
                     <input
                       disabled={edit}
                       ref={website}
-                      className={`w-full px-6 py-2 text-lg ${
-                        edit ? "text-gray-600" : ""
-                      }  bg-gray-100 rounded-lg`}
+                      className={`w-full px-6 py-2 text-lg ${edit ? "text-gray-600" : ""
+                        }  bg-gray-100 rounded-lg`}
                       type="url"
                       defaultValue={data?.website}
                     ></input>
                   </div>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-6 sm:gap-12 w-full ">
-                  <div className="text-xl tracking-wide font-medium w-full sm:w-1/2">
-                    <div>Logo Url</div>
-                    <div className="font-light tracking-widest text-base mt-1">
+                  <div className="text-xl font-medium w-full sm:w-1/2">
+                    <div>Logo URL</div>
+                    <div className="font-light mt-1 text-sm">
                       This will be displayed on your profile{" "}
                     </div>
                   </div>
@@ -203,9 +194,8 @@ function Profile(props) {
                     <input
                       disabled={edit}
                       ref={image}
-                      className={`w-full px-6 py-2 text-lg ${
-                        edit ? "text-gray-600" : ""
-                      }  bg-gray-100 rounded-lg`}
+                      className={`w-full px-6 py-2 text-lg ${edit ? "text-gray-600" : ""
+                        }  bg-gray-100 rounded-lg`}
                       type="text"
                       required={true}
                       minLength={1}
@@ -214,9 +204,9 @@ function Profile(props) {
                   </div>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-6 sm:gap-12 w-full ">
-                  <div className="text-xl tracking-wide font-medium w-full sm:w-1/2">
+                  <div className="text-xl font-medium w-full sm:w-1/2">
                     <div>Description</div>
-                    <div className="font-light tracking-widest text-base mt-1">
+                    <div className="font-light text-sm mt-1">
                       About 100 words
                     </div>
                   </div>
@@ -225,9 +215,8 @@ function Profile(props) {
                       rows={3}
                       disabled={edit}
                       ref={description}
-                      className={`w-full px-6 py-2 text-lg ${
-                        edit ? "text-gray-600" : ""
-                      }  bg-gray-100 rounded-lg`}
+                      className={`w-full px-6 py-2 text-lg ${edit ? "text-gray-600" : ""
+                        }  bg-gray-100 rounded-lg`}
                       type="text"
                       required={true}
                       minLength={1}
@@ -237,31 +226,29 @@ function Profile(props) {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-6 sm:gap-12 w-full ">
-                  <div className="text-xl tracking-wide font-medium w-full sm:w-1/2">
+                  <div className="text-xl font-medium w-full sm:w-1/2">
                     <div>Email</div>
                   </div>
                   <div className="w-full">
                     <input
                       disabled
-                      className={`w-full px-6 py-2 text-lg ${
-                        edit ? "text-gray-600" : ""
-                      }  bg-gray-100 rounded-lg`}
+                      className={`w-full px-6 py-2 text-lg ${edit ? "text-gray-600" : ""
+                        }  bg-gray-100 rounded-lg`}
                       type="email"
                       value={email}
                     ></input>
                   </div>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-6 sm:gap-12 w-full ">
-                  <div className="text-xl tracking-wide font-medium w-full sm:w-1/2">
-                    <div>Contact No</div>
+                  <div className="text-xl font-medium w-full sm:w-1/2">
+                    <div>Contact No.</div>
                   </div>
                   <div className="w-full">
                     <input
                       disabled={edit}
                       ref={mobile}
-                      className={`w-full px-6 py-2 text-lg ${
-                        edit ? "text-gray-600" : ""
-                      }  bg-gray-100 rounded-lg`}
+                      className={`w-full px-6 py-2 text-lg ${edit ? "text-gray-600" : ""
+                        }  bg-gray-100 rounded-lg`}
                       type="text"
                       required={true}
                       minLength={1}
@@ -270,7 +257,7 @@ function Profile(props) {
                   </div>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-6 sm:gap-12 w-full ">
-                  <div className="text-xl tracking-wide font-medium w-full sm:w-1/2">
+                  <div className="text-xl font-medium w-full sm:w-1/2">
                     <div>Address</div>
                   </div>
                   <div className="w-full">
@@ -278,9 +265,8 @@ function Profile(props) {
                       rows={2}
                       disabled={edit}
                       ref={address}
-                      className={`w-full px-6 py-2 text-lg ${
-                        edit ? "text-gray-600" : ""
-                      }  bg-gray-100 rounded-lg`}
+                      className={`w-full px-6 py-2 text-lg ${edit ? "text-gray-600" : ""
+                        }  bg-gray-100 rounded-lg`}
                       type="text"
                       required={true}
                       minLength={1}
@@ -289,16 +275,15 @@ function Profile(props) {
                   </div>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-6 sm:gap-12 w-full ">
-                  <div className="text-xl tracking-wide font-medium w-full sm:w-1/2">
+                  <div className="text-xl font-medium w-full sm:w-1/2">
                     <div>Pincode</div>
                   </div>
                   <div className="w-full">
                     <input
                       disabled={edit}
                       ref={pincode}
-                      className={`w-full px-6 py-2 text-lg ${
-                        edit ? "text-gray-600" : ""
-                      }  bg-gray-100 rounded-lg`}
+                      className={`w-full px-6 py-2 text-lg ${edit ? "text-gray-600" : ""
+                        }  bg-gray-100 rounded-lg`}
                       type="text"
                       required={true}
                       minLength={1}
@@ -308,21 +293,19 @@ function Profile(props) {
                 </div>
               </form>
               <form
-                className={` gap-10 mt-36 w-full flex-col ${
-                  page === "password" ? "flex" : "hidden"
-                }`}
+                className={` gap-10 mt-36 w-full flex-col ${page === "password" ? "flex" : "hidden"
+                  }`}
               >
                 <div className="flex gap-12 w-full items-center">
-                  <div className="text-xl tracking-wide font-medium w-1/2">
+                  <div className="text-xl font-medium w-1/2">
                     <div>New password</div>
                   </div>
                   <div className="w-full">
                     <input
                       required={true}
                       minLength={8}
-                      className={`w-full px-6 py-2 text-lg ${
-                        edit ? "text-gray-600" : ""
-                      }  bg-gray-100 rounded-lg password`}
+                      className={`w-full px-6 py-2 text-lg ${edit ? "text-gray-600" : ""
+                        }  bg-gray-100 rounded-lg password`}
                       type="text"
                       placeholder="New password"
                       onKeyDown={() => {
@@ -332,7 +315,7 @@ function Profile(props) {
                   </div>
                 </div>
                 <div className="flex gap-12 w-full items-center">
-                  <div className="text-xl tracking-wide font-medium w-1/2">
+                  <div className="text-xl font-medium w-1/2">
                     <div>Confirm password</div>
                   </div>
                   <div className="w-full relative">
@@ -340,9 +323,8 @@ function Profile(props) {
                       type={confirmPasswordType}
                       required={true}
                       minLength={8}
-                      className={`password-show w-full px-6 py-2 text-lg ${
-                        edit ? "text-gray-600" : ""
-                      }  bg-gray-100 rounded-lg confirmPassword`}
+                      className={`password-show w-full px-6 py-2 text-lg ${edit ? "text-gray-600" : ""
+                        }  bg-gray-100 rounded-lg confirmPassword`}
                       placeholder="Confirm Password"
                       onKeyDown={() => {
                         setConfirmPassword(
@@ -362,9 +344,8 @@ function Profile(props) {
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className={`h-5 w-5 ${
-                          confirmPasswordType === "text" ? "hidden" : ""
-                        }`}
+                        className={`h-5 w-5 ${confirmPasswordType === "text" ? "hidden" : ""
+                          }`}
                         viewBox="0 0 20 20"
                         fill="currentColor"
                       >
@@ -377,9 +358,8 @@ function Profile(props) {
                       </svg>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className={`h-5 w-5 ${
-                          confirmPasswordType === "password" ? "hidden" : ""
-                        }`}
+                        className={`h-5 w-5 ${confirmPasswordType === "password" ? "hidden" : ""
+                          }`}
                         viewBox="0 0 20 20"
                         fill="currentColor"
                       >
@@ -397,18 +377,16 @@ function Profile(props) {
                 <div className="flex justify-between mb-12 ">
                   <div className="text-left">
                     <h1
-                      className={`text-xl ${
-                        passwordMatched ? "text-green-400" : "text-red-400"
-                      } ${password || confirmPassword ? "block" : "hidden"}`}
+                      className={`text-xl ${passwordMatched ? "text-green-400" : "text-red-400"
+                        } ${password || confirmPassword ? "block" : "hidden"}`}
                     >
                       Password{" "}
                       {`${passwordMatched ? "Matched" : "not matched"}`}
                     </h1>
                   </div>
                   <button
-                    className={`bg-black text-white px-4 py-2 rounded-xl ${
-                      passwordMatched ? "" : "hidden"
-                    }`}
+                    className={`bg-black text-white px-4 py-2 rounded-xl ${passwordMatched ? "" : "hidden"
+                      }`}
                   >
                     Save Changes
                   </button>

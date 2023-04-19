@@ -16,9 +16,9 @@ const Landing = () => {
       </div>
       {/* <Register></Register> */}
       <div id="about">
-        <About></About>
+        <About/>
       </div>
-      <Footer></Footer>
+      <Footer/>
 
     </>
   );
