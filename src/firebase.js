@@ -3,16 +3,18 @@ import { getFirestore, getDoc, doc, updateDoc, getDocs, collection, setDoc } fro
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { generatePassword, randomNumber } from './modules/random';
 
-const apiKey = process.env.REACT_APP_FIREBASE_API_KEY
-const authDomain = process.env.REACT_APP_FIREBASE_AUTH_DOMAIN
-const projectId = process.env.REACT_APP_FIREBASE_PROJECT_ID
-const storageBucket = process.env.REACT_APP_FIREBASE_STORAGE_BUCKET
-const messagingSenderId = process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID
-const appId = process.env.REACT_APP_FIREBASE_APP_ID
-const measurementId = process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
+const firebaseConfig = {
+    apiKey: "AIzaSyCOpArtYL2kncWFHx4YSzQPnmk0w4HrxEs",
+    authDomain: "do-nation-web.firebaseapp.com",
+    projectId: "do-nation-web",
+    storageBucket: "do-nation-web.appspot.com",
+    messagingSenderId: "882359419027",
+    appId: "1:882359419027:web:22634e4c2aef1ca5860d66",
+    measurementId: "G-0B8BZ62THE"
+};
 
 // Initialising app
-initializeApp({ apiKey, authDomain, projectId, storageBucket, messagingSenderId, appId, measurementId });
+initializeApp(firebaseConfig);
 
 // Initialising services
 const db = getFirestore();
