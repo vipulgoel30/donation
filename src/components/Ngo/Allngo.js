@@ -2,12 +2,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 // import Navbar from "../User/Navbar";
-// import dummyImage from "../../images/dummy.webp";
+import dummyImage from "./../../images/Ngo/ngoDump.webp";
 import { getNgos } from "../../firebase";
 import Logo from "./../Logo";
 const Allngo = () => {
   const [dashboardAnimation, setDashboardAnimation] = useState("");
-  const [ngos, setNgos] = useState();
+  const [ngos, setNgos] = useState([]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -24,7 +24,7 @@ const Allngo = () => {
         <div className="flex border-b-4 drop-shadow-lg justify-between px-12">
           <Link to="/">
             <div className="flex m-4">
-              <Logo dimension={2} />
+              <Logo dimension={3} />
               <p className="flex items-center font-bold text-xl justify-center mx-3">
                 DoNation
               </p>
