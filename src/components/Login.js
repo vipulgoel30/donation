@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { loginNgo, loginUser } from '../firebase'
 import { useNavigate } from 'react-router-dom'
+import RegisterNavBar from "./RegisterNavBar"
 
 const Login = ({ type }) => {
   const navigate = useNavigate()
@@ -26,6 +27,7 @@ const Login = ({ type }) => {
 
   return (
     <>
+    <RegisterNavBar/>
       <div className='flex justify-center items-center m-8'>
         <img className='w-1/3' src={login} alt="" />
         <form className='flex flex-col w-1/3 justify-center m-4' onSubmit={submit}>
