@@ -75,13 +75,13 @@ const Allngo = () => {
       <div
         className={`${
           dashboardAnimation === "" ? "hidden" : ""
-        }  mt-24 sm:mt-8 mx-8 mb-12`}
+        }  mt-24 sm:mt-8 mx-2 xsm:mx-4 sm:mx-8 mb-12`}
       >
-        <div className=" px-2 xsm:px-12 grid xlg:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 gap-12 ">
+        <div className="px-2 xsm:px-3 sm:px-6 md:px-12 grid xlg:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 gap-12 ">
           {ngos?.map(({ uid, name, image, mobile, description },index) => (
             <div
               key={index}
-              className="shadow-[0_1px_16px_2px_rgba(0,0,0,.2)] rounded-xl  px-2 sm:px-8 py-6 flex  flex-col gap-6 bg-slate-50  hover:text-colorPrimary hover:border-colorPrimary hover:border-2 transition-all duration-200 ease-in-out "
+              className="shadow-[0_1px_16px_2px_rgba(0,0,0,.2)] rounded-xl border-2 border-transparent  px-2 xsm:px-4 sm:px-8 py-6 flex  flex-col gap-6 bg-slate-50  hover:text-colorPrimary hover:border-colorPrimary  transition-all duration-500 ease-in-out "
             >
               <div className="flex gap-10">
                 <img
@@ -102,7 +102,7 @@ const Allngo = () => {
               </div>
               <div>
                 <span className="text-xl font-medium ">Description:</span>
-                <div className="text-neutral-700 pt-2">{description}</div>
+                <div className="text-neutral-700 pt-2">{description.substr(0,150)}</div>
               </div>
               <div className="flex flex-col gap-2 sm:flex-row sm:gap-0  justify-between items-center ">
                 {/* <div>
