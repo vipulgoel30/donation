@@ -29,7 +29,7 @@ const useAuth = () => {
                 }
             }
         })
-        return () => { unlisten(); }
+        return unlisten;
     }, []);
 
     return { user, ngo, email }

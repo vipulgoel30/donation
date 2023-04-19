@@ -72,9 +72,8 @@ export async function initiateDonation(uid, description) {
         const ref = doc(db, `/users/${uid}`)
         const info = await getDoc(ref)
         const donation = { id: randomNumber(6), description, status: 'pending', uid, date: Date.now() }
-        let donations;
         if (info.exists()) {
-            donations = info.data().donations || []
+            var donations = info.data().donations || []
             donations.push(donation)
             console.log(donations)
             await updateDoc(ref, { donations })
