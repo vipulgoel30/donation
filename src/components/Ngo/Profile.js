@@ -7,6 +7,8 @@ import dummyImage from "../../images/dummy.webp";
 import bgImage from "./bg-image.jpg";
 import { toast } from "react-toastify";
 import { useDataContext } from "../../context/ContextProvider";
+import { logout } from "../../firebase";
+import logOutIcon from "./../../images/confirmation.webp";
 
 function Profile(props) {
   const [edit, setEdit] = useState(true);
@@ -25,8 +27,25 @@ function Profile(props) {
   const address = useRef();
   const pincode = useRef();
 
+  async function handleLogout() {
+    const { success } = await logout();
+    if (!success) return toast.error("Some error occured...");
+    toast.success("Logged out successfully");
+  }
+
   async function submit(event) {
     event.preventDefault();
+    if (
+      !name.current.value ||
+      !website.current.value ||
+      !image.current.value ||
+      !description.current.value ||
+      !mobile.current.value ||
+      !address.current.value ||
+      pincode.current.value
+    ) {
+      toast.warn("Please complete your profile ");
+    }
     const { success } = await setNgoData(
       ngo,
       name.current.value,
@@ -42,7 +61,9 @@ function Profile(props) {
     window.location.reload();
     // toast.success("Profile updated successfully!");
   }
-
+  function hiddenModal() {
+    setpage("profile");
+  }
   useEffect(() => {
     if (
       password === confirmPassword &&
@@ -58,21 +79,56 @@ function Profile(props) {
   return (
     <>
       <div className={`${page === "logout" ? "" : "hidden"}`}>
-        <LogOut />
+        <div className={`relative  logoutPanel z-10  `}>
+          <div
+            className={`fixed top-1/2 left-1/2  z-10 -translate-x-1/2 -translate-y-1/2 `}
+          >
+            <div className="bg-white flex flex-col gap-6  items-center px-16 py-8 rounded-3xl border-t-8 border-t-green-400 ">
+              <img
+                src={logOutIcon}
+                alt="Log out"
+                className="w-24 animate-[spin_1s_ease-in-out]"
+              />
+              <h1 className="text-xl tracking-wide">
+                Are you sure you want to logout
+              </h1>
+              <div className="flex gap-8 ">
+                <button
+                  className="tracking-wider rounded-2xl text-xl font-semibold bg-[#7ed56f] px-6 py-2 text-gray-100 transition-all duration-200 hover:scale-105 hover:-translate-y-1 ngo-logout-cancel"
+                  onClick={hiddenModal}
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleLogout}
+                  className="tracking-wider rounded-2xl text-xl font-semibold bg-[#28b485]  px-6 py-2 text-white transition-all duration-200 hover:scale-105 hover:-translate-y-1 ngo-logout-confirm"
+                >
+                  Confirm
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            className="fixed top-0 left-0 w-screen h-screen bg-black/50 overlay z-5 "
+            onClick={hiddenModal}
+          ></div>
+        </div>
       </div>
       <div className="mb-10 font-poppins">
         <div className="max-w-7xl  2xl:mx-auto mx-12 mt-8 ">
           <h1
-            className={`text-3xl font-bold ${props.type === "public" ? "hidden" : ""
-              }`}
+            className={`text-3xl font-bold ${
+              props.type === "public" ? "hidden" : ""
+            }`}
           >
             Settings
           </h1>
           <div className="flex flex-col sm:flex-row gap-12 sm:gap-28 mt-8">
             <div className="flex flex-row sm:flex-col  gap-5 ">
               <div
-                className={`text-xl cursor-pointer ${page === "profile" ? "font-bold text-2xl" : ""
-                  }`}
+                className={`text-xl cursor-pointer ${
+                  page === "profile" ? "font-bold text-2xl" : ""
+                }`}
                 onClick={() => {
                   setpage("profile");
                 }}
@@ -80,11 +136,9 @@ function Profile(props) {
                 Profile
               </div>
               <div
-                className={`hidden sm:block text-xl cursor-pointer ${props.type === "public" ? "hidden" : ""
-                  } ${page === "password"
-                    ? "font-bold text-2xl"
-                    : ""
-                  }`}
+                className={`hidden sm:block text-xl cursor-pointer ${
+                  props.type === "public" ? "hidden" : ""
+                } ${page === "password" ? "font-bold text-2xl" : ""}`}
                 onClick={() => {
                   setpage("password");
                 }}
@@ -92,9 +146,9 @@ function Profile(props) {
                 Password
               </div>
               <div
-                className={`text-xl cursor-pointer ${props.type === "public" ? "hidden" : ""
-                  } ${page === "logout" ? "font-bold text-2xl" : ""
-                  }`}
+                className={`text-xl cursor-pointer ${
+                  props.type === "public" ? "hidden" : ""
+                } ${page === "logout" ? "font-bold text-2xl" : ""}`}
                 onClick={() => {
                   setpage("logout");
                 }}
@@ -103,7 +157,11 @@ function Profile(props) {
               </div>
             </div>
             <div className="w-full -mt-12">
-              <img className="h-36 rounded-t-3xl w-full bg-gray-200 object-cover" src={bgImage} alt="" />
+              <img
+                className="h-36 rounded-t-3xl w-full bg-gray-200 object-cover"
+                src={bgImage}
+                alt=""
+              />
               <div className="">
                 <img
                   src={data?.image || dummyImage}
@@ -124,17 +182,20 @@ function Profile(props) {
               </div>
               <form
                 onSubmit={submit}
-                className={`gap-10 mt-36 w-full flex-col relative ${page === "profile" ? "flex" : "hidden"
-                  }`}
+                className={`gap-10 mt-36 w-full flex-col relative ${
+                  page === "profile" ? "flex" : "hidden"
+                }`}
               >
                 <div
-                  className={`hidden sm:flex absolute -top-36 right-0 mt-4  gap-4 items-center ${props.type === "public" ? "hidden" : ""
-                    }`}
+                  className={`hidden sm:flex absolute -top-36 right-0 mt-4  gap-4 items-center ${
+                    props.type === "public" ? "hidden" : ""
+                  }`}
                 >
                   <button
                     type="button"
-                    className={`bg-gray-200 text-black font-semibold px-4 py-2 rounded-xl ${edit ? "hidden" : ""
-                      }`}
+                    className={`bg-gray-200 text-black font-semibold px-4 py-2 rounded-xl ${
+                      edit ? "hidden" : ""
+                    }`}
                     onClick={() => {
                       setEdit(true);
                     }}
@@ -159,8 +220,9 @@ function Profile(props) {
                     <input
                       disabled={edit}
                       ref={name}
-                      className={`w-full px-6 py-2 text-lg ${edit ? "text-gray-600" : ""
-                        }  bg-gray-100 rounded-lg`}
+                      className={`w-full px-6 py-2 text-lg ${
+                        edit ? "text-gray-600" : ""
+                      }  bg-gray-100 rounded-lg`}
                       type="text"
                       required={true}
                       minLength={1}
@@ -176,8 +238,9 @@ function Profile(props) {
                     <input
                       disabled={edit}
                       ref={website}
-                      className={`w-full px-6 py-2 text-lg ${edit ? "text-gray-600" : ""
-                        }  bg-gray-100 rounded-lg`}
+                      className={`w-full px-6 py-2 text-lg ${
+                        edit ? "text-gray-600" : ""
+                      }  bg-gray-100 rounded-lg`}
                       type="url"
                       defaultValue={data?.website}
                     ></input>
@@ -194,8 +257,9 @@ function Profile(props) {
                     <input
                       disabled={edit}
                       ref={image}
-                      className={`w-full px-6 py-2 text-lg ${edit ? "text-gray-600" : ""
-                        }  bg-gray-100 rounded-lg`}
+                      className={`w-full px-6 py-2 text-lg ${
+                        edit ? "text-gray-600" : ""
+                      }  bg-gray-100 rounded-lg`}
                       type="text"
                       required={true}
                       minLength={1}
@@ -215,8 +279,9 @@ function Profile(props) {
                       rows={3}
                       disabled={edit}
                       ref={description}
-                      className={`w-full px-6 py-2 text-lg ${edit ? "text-gray-600" : ""
-                        }  bg-gray-100 rounded-lg`}
+                      className={`w-full px-6 py-2 text-lg ${
+                        edit ? "text-gray-600" : ""
+                      }  bg-gray-100 rounded-lg`}
                       type="text"
                       required={true}
                       minLength={1}
@@ -232,8 +297,9 @@ function Profile(props) {
                   <div className="w-full">
                     <input
                       disabled
-                      className={`w-full px-6 py-2 text-lg ${edit ? "text-gray-600" : ""
-                        }  bg-gray-100 rounded-lg`}
+                      className={`w-full px-6 py-2 text-lg ${
+                        edit ? "text-gray-600" : ""
+                      }  bg-gray-100 rounded-lg`}
                       type="email"
                       value={email}
                     ></input>
@@ -247,8 +313,9 @@ function Profile(props) {
                     <input
                       disabled={edit}
                       ref={mobile}
-                      className={`w-full px-6 py-2 text-lg ${edit ? "text-gray-600" : ""
-                        }  bg-gray-100 rounded-lg`}
+                      className={`w-full px-6 py-2 text-lg ${
+                        edit ? "text-gray-600" : ""
+                      }  bg-gray-100 rounded-lg`}
                       type="text"
                       required={true}
                       minLength={1}
@@ -265,8 +332,9 @@ function Profile(props) {
                       rows={2}
                       disabled={edit}
                       ref={address}
-                      className={`w-full px-6 py-2 text-lg ${edit ? "text-gray-600" : ""
-                        }  bg-gray-100 rounded-lg`}
+                      className={`w-full px-6 py-2 text-lg ${
+                        edit ? "text-gray-600" : ""
+                      }  bg-gray-100 rounded-lg`}
                       type="text"
                       required={true}
                       minLength={1}
@@ -282,8 +350,9 @@ function Profile(props) {
                     <input
                       disabled={edit}
                       ref={pincode}
-                      className={`w-full px-6 py-2 text-lg ${edit ? "text-gray-600" : ""
-                        }  bg-gray-100 rounded-lg`}
+                      className={`w-full px-6 py-2 text-lg ${
+                        edit ? "text-gray-600" : ""
+                      }  bg-gray-100 rounded-lg`}
                       type="text"
                       required={true}
                       minLength={1}
@@ -293,8 +362,9 @@ function Profile(props) {
                 </div>
               </form>
               <form
-                className={` gap-10 mt-36 w-full flex-col ${page === "password" ? "flex" : "hidden"
-                  }`}
+                className={` gap-10 mt-36 w-full flex-col ${
+                  page === "password" ? "flex" : "hidden"
+                }`}
               >
                 <div className="flex gap-12 w-full items-center">
                   <div className="text-xl font-medium w-1/2">
@@ -304,8 +374,9 @@ function Profile(props) {
                     <input
                       required={true}
                       minLength={8}
-                      className={`w-full px-6 py-2 text-lg ${edit ? "text-gray-600" : ""
-                        }  bg-gray-100 rounded-lg password`}
+                      className={`w-full px-6 py-2 text-lg ${
+                        edit ? "text-gray-600" : ""
+                      }  bg-gray-100 rounded-lg password`}
                       type="text"
                       placeholder="New password"
                       onKeyDown={() => {
@@ -323,8 +394,9 @@ function Profile(props) {
                       type={confirmPasswordType}
                       required={true}
                       minLength={8}
-                      className={`password-show w-full px-6 py-2 text-lg ${edit ? "text-gray-600" : ""
-                        }  bg-gray-100 rounded-lg confirmPassword`}
+                      className={`password-show w-full px-6 py-2 text-lg ${
+                        edit ? "text-gray-600" : ""
+                      }  bg-gray-100 rounded-lg confirmPassword`}
                       placeholder="Confirm Password"
                       onKeyDown={() => {
                         setConfirmPassword(
@@ -344,8 +416,9 @@ function Profile(props) {
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className={`h-5 w-5 ${confirmPasswordType === "text" ? "hidden" : ""
-                          }`}
+                        className={`h-5 w-5 ${
+                          confirmPasswordType === "text" ? "hidden" : ""
+                        }`}
                         viewBox="0 0 20 20"
                         fill="currentColor"
                       >
@@ -358,8 +431,9 @@ function Profile(props) {
                       </svg>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className={`h-5 w-5 ${confirmPasswordType === "password" ? "hidden" : ""
-                          }`}
+                        className={`h-5 w-5 ${
+                          confirmPasswordType === "password" ? "hidden" : ""
+                        }`}
                         viewBox="0 0 20 20"
                         fill="currentColor"
                       >
@@ -377,16 +451,18 @@ function Profile(props) {
                 <div className="flex justify-between mb-12 ">
                   <div className="text-left">
                     <h1
-                      className={`text-xl ${passwordMatched ? "text-green-400" : "text-red-400"
-                        } ${password || confirmPassword ? "block" : "hidden"}`}
+                      className={`text-xl ${
+                        passwordMatched ? "text-green-400" : "text-red-400"
+                      } ${password || confirmPassword ? "block" : "hidden"}`}
                     >
                       Password{" "}
                       {`${passwordMatched ? "Matched" : "not matched"}`}
                     </h1>
                   </div>
                   <button
-                    className={`bg-black text-white px-4 py-2 rounded-xl ${passwordMatched ? "" : "hidden"
-                      }`}
+                    className={`bg-black text-white px-4 py-2 rounded-xl ${
+                      passwordMatched ? "" : "hidden"
+                    }`}
                   >
                     Save Changes
                   </button>

@@ -72,40 +72,43 @@ export default function Posts() {
                 Recent events
               </button>
             </div>
-            {data?.events?.sort(sortEvents).map(({ title, description, image, url, date }) => (
-              <div
-                key={date}
-                className="flex flex-col px-8 py-4  rounded-3xl shadow-xl w-full gap-6 "
-              >
-                <a href={url} target="_blank" rel="noreferrer">
-                  <div className="flex gap-6 items-center">
-                    <img
-                      src={data?.image || dummyImage}
-                      className="rounded-full w-16 h-16"
-                    />
-                    <div className="flex flex-col p-1 gap-.5">
-                      <div className="text-2xl text-gray-800 font-extralight">
-                        {data?.name}
-                      </div>
-                      <div className="text-sm text-gray-500">
-                        {relativeTime(date)}
+            {data?.events
+              ?.sort(sortEvents)
+              .map(({ title, description, image, url, date }) => (
+                <div
+                  key={date}
+                  className="flex flex-col px-8 py-4  rounded-3xl shadow-xl w-full gap-6 "
+                >
+                  <a href={url} target="_blank" rel="noreferrer">
+                    <div className="flex gap-6 items-center">
+                      <img
+                        src={data?.image || dummyImage}
+                        className="rounded-full w-16 h-16"
+                      />
+                      <div className="flex flex-col p-1 gap-.5">
+                        <div className="text-2xl text-gray-800 font-extralight">
+                          {data?.name}
+                        </div>
+                        <div className="text-sm text-gray-500">
+                          {relativeTime(date)}
+                        </div>
                       </div>
                     </div>
+                    <div>
+                      <img src={image} className="w-full h-64"></img>
+                    </div>
+                  </a>
+                  <div className="font-semibold text-2xl pl-3">{title}</div>
+                  <div className="font-light leading-7 -mt-3">
+                    {description}
                   </div>
-                  <div>
-                    <img src={image} className="w-full h-64"></img>
-                  </div>
-                </a>
-                <div className="font-semibold text-2xl pl-3">
-                  {title}
                 </div>
-                <div className="font-light leading-7 -mt-3">{description}</div>
-              </div>
-            ))}
+              ))}
           </div>
           <div
-            className={`w-full sm:w-2/3 shadow-[-4px_0px_24px_rgba(0,0,0,.2)]  shadow-slate-300 rounded-3xl px-8 py-8 pt-16  flex-col gap-8 text-gray-600 relative ${post === "flex" ? "hidden" : "flex"
-              }`}
+            className={`w-full sm:w-2/3 shadow-[-4px_0px_24px_rgba(0,0,0,.2)]  shadow-slate-300 rounded-3xl px-8 py-8 pt-16  flex-col gap-8 text-gray-600 relative ${
+              post === "flex" ? "hidden" : "flex"
+            }`}
           >
             <div
               className="absolute top-7 right-10"
@@ -128,9 +131,7 @@ export default function Posts() {
                 />
               </svg>
             </div>
-            <h1 className="text-3xl font-thin">
-              New events
-            </h1>
+            <h1 className="text-3xl font-thin">New events</h1>
             <form onSubmit={submit} className="flex flex-col gap-8 w-full">
               <div className="w-full">
                 <input
@@ -171,9 +172,10 @@ export default function Posts() {
               </div>
               <button
                 type="submit"
-              //   className="bg-gradient-to-r from-gradient1a to-gradient1b py-3 text-3xl rounded-3xl hover:-translate-y-1 transition-all duration-200 hover:scale-[1.01] "
-              // >
-                className="font-semibold inline-block bg-gradient-to-r from-gradient1a to-gradient1b border rounded-lg px-4 py-2 m-2">
+                //   className="bg-gradient-to-r from-gradient1a to-gradient1b py-3 text-3xl rounded-3xl hover:-translate-y-1 transition-all duration-200 hover:scale-[1.01] "
+                // >
+                className="font-semibold inline-block bg-gradient-to-r from-gradient1a to-gradient1b border rounded-lg px-4 py-2 m-2"
+              >
                 Submit
               </button>
             </form>
