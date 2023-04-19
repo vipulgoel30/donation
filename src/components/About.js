@@ -1,4 +1,7 @@
 import React from 'react'
+import about1 from '../images/about1.png'
+import about2 from '../images/about2.png'
+import about3 from '../images/about3.png'
 
 const About = () => {
     return (
@@ -7,7 +10,7 @@ const About = () => {
             <div className="flex flex-col gap-16 sm:gap-6 mx-4 sm:mx-12 md:mx-20 lg:mx-44">
 
                 <div className='flex justify-center gap-1'>
-                    <img className='w-1/3' src="https://images.pexels.com/photos/7473039/pexels-photo-7473039.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="Use of Donations made by you" />
+                    <img className='w-1/3' src={about1} alt="Use of Donations made by you" />
                     <div className='flex flex-col justify-center items-center gap-2'>
 
                         <h1 className='font-bold text-lg '>Use of Donations made by you</h1>
@@ -21,11 +24,11 @@ const About = () => {
                         <h1 className='font-bold text-lg m-2'>Education for children</h1>
                         <p className='m-2'>Thousands of children are helped by donors who accompany them along their journey. Sponsorship allows a child to attend school and learning the basic skills of life.</p>
                     </div>
-                    <img className='w-1/3' src="https://images.pexels.com/photos/7473039/pexels-photo-7473039.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="Education for children" />
+                    <img className='w-1/3' src={about2} alt="Education for children" />
                 </div>
 
                 <div className='flex justify-center gap-1'>
-                    <img className='w-1/3' src="https://images.pexels.com/photos/7473039/pexels-photo-7473039.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="Making them future ready" />
+                    <img className='w-1/3' src={about3} alt="Making them future ready" />
                     <div className=' flex flex-col justify-center items-center gap-2'>
 
                         <h1 className='font-bold text-lg m-2'>Making them future ready</h1>

@@ -51,11 +51,18 @@ const Footer = () => {
 
                     <h1 className='font-bold text-xl'>CONNECT</h1>
                     <div className='flex gap-3 '>
-                        <AiFillInstagram className="text-4xl text-pink-600 cursor-pointer"></AiFillInstagram>
+                        <a href="https://www.instagram.com/">
+                        <AiFillInstagram className="text-4xl text-pink-600 cursor-pointer"/>
+                        </a>
+                        <a href="https://www.instagram.com/">
                         <AiOutlineTwitter className="text-4xl text-gradient1b cursor-pointer" />
+                        </a>
+                        <a href="https://twitter.com/">
                         <FaYoutube className="text-4xl text-red-600 cursor-pointer" />
-                        <FaLinkedinIn className="text-4xl text-blue-600 cursor-pointer"></FaLinkedinIn>
-
+                        </a>
+                        <a href="https://in.linkedin.com/">
+                            <FaLinkedinIn className="text-4xl text-blue-600 cursor-pointer"/>
+                        </a>
                     </div>
                 </div>
             </div>

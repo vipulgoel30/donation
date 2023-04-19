@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 // import Navbar from "../User/Navbar";
-import dummyImage from "./../../images/Ngo/ngoDump.webp";
-import { getNgos } from "../../firebase";
-import Logo from "../Logo";
+import dummyImage from "./../../../images/ngoDump.webp";
+import { getNgos } from "../../../firebase";
+import Logo from "./../../Logo";
 const Allngo = () => {
   const [dashboardAnimation, setDashboardAnimation] = useState("");
   const [ngos, setNgos] = useState();
@@ -54,17 +54,17 @@ const Allngo = () => {
       </div> */}
       {/* Animation of dahboard for showing palete */}
       <div className={`my-24 sm:mt-8 px-16 ${dashboardAnimation}`}>
-        <div class=" shadow-2xl rounded-md p-12 max-w-lg w-full ">
-          <div class="animate-pulse flex space-x-4">
-            <div class="rounded-full bg-slate-300 h-10 w-10"></div>
-            <div class="flex-1 space-y-6 py-1">
-              <div class="h-2 bg-slate-300 rounded"></div>
-              <div class="space-y-3">
-                <div class="grid grid-cols-3 gap-4">
-                  <div class="h-2 bg-slate-300 rounded col-span-2"></div>
-                  <div class="h-2 bg-slate-300 rounded col-span-1"></div>
+        <div className=" shadow-2xl rounded-md p-12 max-w-lg w-full ">
+          <div className="animate-pulse flex space-x-4">
+            <div className="rounded-full bg-slate-300 h-10 w-10"></div>
+            <div className="flex-1 space-y-6 py-1">
+              <div className="h-2 bg-slate-300 rounded"></div>
+              <div className="space-y-3">
+                <div className="grid grid-cols-3 gap-4">
+                  <div className="h-2 bg-slate-300 rounded col-span-2"></div>
+                  <div className="h-2 bg-slate-300 rounded col-span-1"></div>
                 </div>
-                <div class="h-2 bg-slate-300 rounded"></div>
+                <div className="h-2 bg-slate-300 rounded"></div>
               </div>
             </div>
           </div>
@@ -78,9 +78,9 @@ const Allngo = () => {
         }  mt-24 sm:mt-8 mx-8 mb-12`}
       >
         <div className=" px-2 xsm:px-12 grid xlg:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 gap-12 ">
-          {ngos?.map(({ uid, name, image, mobile, description }) => (
+          {ngos?.map(({ uid, name, image, mobile, description },index) => (
             <div
-              key={uid}
+              key={index}
               className="shadow-[0_1px_16px_2px_rgba(0,0,0,.2)] rounded-xl  px-2 sm:px-8 py-6 flex  flex-col gap-6 bg-slate-50  hover:text-colorPrimary hover:border-colorPrimary hover:border-2 transition-all duration-200 ease-in-out "
             >
               <div className="flex gap-10">

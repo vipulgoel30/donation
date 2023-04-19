@@ -22,7 +22,7 @@ const Navbar = () => {
             </p>
           </div>
         </Link>
-        <span class="right-0 text-3xl cursor-pointer mx-2 md:hidden">
+        <span className="right-0 text-3xl cursor-pointer mx-2 md:hidden">
           <img src={ham} alt="" />
         </span>
 

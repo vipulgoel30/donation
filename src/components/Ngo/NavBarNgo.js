@@ -1,12 +1,12 @@
 import React from "react";
 // import styled from "styled-components";
 // import PropTypes from "prop-types";
-import Logo from "../../components/Logo";
-import dummyImage from "./../../images/Ngo/dummy.webp";
+import Logo from "../Logo";
+import dummyImage from "./../../images/dummy.webp";
 import { Link } from "react-router-dom";
 import { useDataContext } from "../../context/ContextProvider";
 
-const NavBar = () => {
+const NavBarNgo = () => {
   const { ngoData: data } = useDataContext()
 
   return (
@@ -176,4 +176,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default NavBarNgo;

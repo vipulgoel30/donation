@@ -1,18 +1,15 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-
-import Logo from "./Logo";
+import React from "react";
 import About from "../components/About";
 import Footer from "../components/Footer";
 import Testimonials from "./Testimonials";
 
-// import NavBarLanding from "./NavBarLanding";
-// import RegisterBannerLanding from "./RegisterBannerLanding";
+import NavBarLanding from "./NavBarLanding";
+import RegisterBannerLanding from "./RegisterBannerLanding";
 const Landing = () => {
   return (
     <>
-      {/* <NavBarLanding />
-      <RegisterBannerLanding /> */}
+      <NavBarLanding />
+      <RegisterBannerLanding />
 
       <div id="testimonials">
         <Testimonials />

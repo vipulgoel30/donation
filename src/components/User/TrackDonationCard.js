@@ -79,7 +79,7 @@ export default function TrackDonationCard({ id, status, description, ngoid, date
         <div className={`${dropDown === "up" ? "block" : "hidden"}`}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class={`h-8 w-8  text-${color}-400 bg-${color}-50 p-1 rounded-full   `}
+            className={`h-8 w-8  text-${color}-400 bg-${color}-50 p-1 rounded-full   `}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -98,7 +98,7 @@ export default function TrackDonationCard({ id, status, description, ngoid, date
         <div className={`${dropDown === "down" ? "" : "hidden"}`}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class={`h-6 w-6  text-${color}-400 `}
+            className={`h-6 w-6  text-${color}-400 `}
             onClick={() => {
               setDropDown("up");
             }}
