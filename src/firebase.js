@@ -1,4 +1,5 @@
 import { initializeApp } from 'firebase/app'
+import { getAnalytics } from 'firebase/analytics'
 import { getFirestore, getDoc, doc, updateDoc, getDocs, collection, setDoc } from "firebase/firestore";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { generatePassword, randomNumber } from './modules/random';
@@ -14,7 +15,8 @@ const firebaseConfig = {
 };
 
 // Initialising app
-initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+getAnalytics(app)
 
 // Initialising services
 const db = getFirestore();
