@@ -6,7 +6,7 @@ import about3 from '../images/about3.png'
 const About = () => {
     return (
         <div className='my-14 border-b-2 pb-12'>
-            <h1 className='text-2xl md:text-4xl font-bold font-mono text-center tracking-widest mb-12'>About Us</h1>
+            <h1 className='text-2xl md:text-4xl font-bold font-cabin text-center mb-12'>About Us</h1>
             <div className="flex flex-col gap-16 sm:gap-6 mx-4 sm:mx-12 md:mx-20 lg:mx-44">
 
                 <div className='flex justify-center gap-1'>
