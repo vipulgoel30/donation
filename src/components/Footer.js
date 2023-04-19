@@ -43,25 +43,29 @@ const Footer = () => {
 
                     <form onSubmit={(event) => {
                         event.preventDefault();
+                        subscribe()
                     }} className="w-full flex gap-4 flex-col">
                         <input className='w-full border text-sm px-3 py-2   bg-gray-200 rounded-lg hover:bg-white' type="email" name="" id="" placeholder='Email Address' required />
-                        <button onClick={subscribe} className="w-full font-semibold  px-3 py-2  bg-gradient-to-r from-gradient1a to-gradient1b border rounded-lg ">{sub}</button>
+                        <button className="w-full font-semibold  px-3 py-2  bg-gradient-to-r from-gradient1a to-gradient1b border rounded-lg ">{sub}</button>
                     </form>
 
 
                     <h1 className='font-bold text-xl'>CONNECT</h1>
                     <div className='flex gap-3 '>
                         <a href="https://www.instagram.com/">
-                        <AiFillInstagram className="text-4xl text-pink-600 cursor-pointer"/>
+                           <div className={`rounded-md sm:rounded-lg relative instagram transition-all duration-500 hover:scale-110 w-[2rem] h-[2rem] sm:w-[1.2rem] sm-h-[1.2rem] md:w-[1.6rem] md:h-[1.6rem] `}  >
+    <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 border-[1.5px] md:border-2 rounded-full' ></div>
+    <div className='absolute top-[20%] right-[15%] w-[12%] h-[12%] bg-white rounded-full'></div>
+  </div >
                         </a>
                         <a href="https://www.instagram.com/">
-                        <AiOutlineTwitter className="text-4xl text-gradient1b cursor-pointer" />
+                            <AiOutlineTwitter className="text-4xl text-gradient1b cursor-pointer" />
                         </a>
                         <a href="https://twitter.com/">
-                        <FaYoutube className="text-4xl text-red-600 cursor-pointer" />
+                            <FaYoutube className="text-4xl text-red-600 cursor-pointer" />
                         </a>
                         <a href="https://in.linkedin.com/">
-                            <FaLinkedinIn className="text-4xl text-blue-600 cursor-pointer"/>
+                            <FaLinkedinIn className="text-4xl text-blue-600 cursor-pointer" />
                         </a>
                     </div>
                 </div>

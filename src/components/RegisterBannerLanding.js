@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import poster from "../images/landing.webp";
 
 export default function RegisterBannerLanding() {
-    return (<div className='bg-[url("images/background.webp")] bg-cover bg-no-repeat bg-center w-100 h-screen pt-36 px-10 flex flex-col sm:flex-row sm:justify-center  '>
+    return (<div className='bg-[url("images/background.webp")] bg-cover bg-no-repeat bg-center w-100 min-h-screen h-fit  pt-36 pb-20 px-10 flex flex-col sm:flex-row sm:justify-center  '>
         <div className="block sm:hidden text-left ">
             <img
                 className="animate-bounce"
