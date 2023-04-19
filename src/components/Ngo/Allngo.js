@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 // import Navbar from "../User/Navbar";
 import dummyImage from "./../../images/Ngo/ngoDump.webp";
 import { getNgos } from "../../firebase";
-import Logo from "./../Logo";
+import Logo from "../Logo";
 const Allngo = () => {
   const [dashboardAnimation, setDashboardAnimation] = useState("");
-  const [ngos, setNgos] = useState([]);
+  const [ngos, setNgos] = useState();
 
   useEffect(() => {
     setTimeout(() => {
@@ -20,11 +20,11 @@ const Allngo = () => {
 
   return (
     <>
-      <div>
+      {/* <div>
         <div className="flex border-b-4 drop-shadow-lg justify-between px-12">
           <Link to="/">
             <div className="flex m-4">
-              <Logo dimension={3} />
+              <Logo dimension={2} />
               <p className="flex items-center font-bold text-xl justify-center mx-3">
                 DoNation
               </p>
@@ -51,7 +51,7 @@ const Allngo = () => {
             </ul>
           </div>
         </div>
-      </div>
+      </div> */}
       {/* Animation of dahboard for showing palete */}
       <div className={`my-24 sm:mt-8 px-16 ${dashboardAnimation}`}>
         <div class=" shadow-2xl rounded-md p-12 max-w-lg w-full ">
@@ -75,7 +75,7 @@ const Allngo = () => {
       <div
         className={`${
           dashboardAnimation === "" ? "hidden" : ""
-        }  mt-24 sm:mt-8`}
+        }  mt-24 sm:mt-8 mx-8 mb-12`}
       >
         <div className=" px-2 xsm:px-12 grid xlg:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 gap-12 ">
           {ngos?.map(({ uid, name, image, mobile, description }) => (

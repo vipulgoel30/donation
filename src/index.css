@@ -1,3 +1,126 @@
 @tailwind base;
 @tailwind components;
+
+body {
+  overflow-x: hidden;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+.triangle-left-top-big {
+  clip-path: polygon(
+    75% 0,
+    75% 62.5%,
+    100% 62.5%,
+    100% 75%,
+    75% 75%,
+    75% 100%,
+    62.5% 100%,
+    62.5% 75%,
+    0 75%,
+    75% 0
+  );
+}
+
+.triangle-left-top-small {
+  clip-path: polygon(100% 0, 100% 100%, 0 100%, 100% 0);
+}
+
+.triangle-right-top-big {
+  clip-path: polygon(
+    25% 0,
+    100% 75%,
+    37.5% 75%,
+    37.5% 100%,
+    25% 100%,
+    25% 75%,
+    0 75%,
+    0 62.5%,
+    25% 62.5%,
+    25% 0
+  );
+}
+
+.triangle-right-top-small {
+  clip-path: polygon(0 0, 100% 100%, 0 100%, 0 0);
+}
+
+.triangle-left-bottom-big {
+  clip-path: polygon(
+    0 25%,
+    62.5% 25%,
+    62.5% 0,
+    75% 0,
+    75% 25%,
+    100% 25%,
+    100% 37.5%,
+    75% 37.5%,
+    75% 100%,
+    0 25%
+  );
+}
+
+.triangle-left-bottom-small {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 0);
+}
+
+.triangle-right-bottom-big {
+  clip-path: polygon(
+    25% 0,
+    37.5% 0,
+    37.5% 25%,
+    100% 25%,
+    25% 100%,
+    25% 37.5%,
+    0 37.5%,
+    0 25%,
+    25% 25%,
+    25% 0
+  );
+}
+
+.triangle-right-bottom-small {
+  clip-path: polygon(0 0, 100% 0, 0 100%, 0 0);
+}
+
+.circle {
+  animation: spinSlowPause 2s infinite ease-out;
+  box-shadow: 0.2rem 0.4rem 2.4rem rgba(0, 0, 0, 0.4);
+  /* border: 0. 62.5% solid transparent;
+  border-image: linear-gradient(red, yellow);
+  border-image-slice: 1; */
+}
+
+@keyframes spinSlowPause {
+  /* 0% {
+    transform: rotate(0);
+  } */
+  50% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
+.loader {
+  animation: spinSlowDelay 2s infinite ease-out;
+  overflow: hidden;
+}
+
+@keyframes spinSlowDelay {
+  50% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 @tailwind utilities;
