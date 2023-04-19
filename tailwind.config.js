@@ -22,6 +22,11 @@ module.exports = {
         4.8: "48%",
         9.8: "98%",
       },
+      fontFamily: {
+        cabin: [
+          "Cabin",
+        ],
+      },
     },
   },
   plugins: [],

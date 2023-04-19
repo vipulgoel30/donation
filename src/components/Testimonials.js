@@ -9,9 +9,9 @@ import imageFive from "./../images/pratham.webp";
 
 const Testimonials = () => {
   return (
-    <div className="flex gap-14 flex-col mt-20  border-b-2 pb-12 ">
-      <h1 className="text-2xl md:text-4xl font-bold font-mono text-center">
-        As recognised by
+    <div className="flex gap-14 flex-col mt-20 border-b-2 pb-12 font-cabin">
+      <h1 className="text-2xl md:text-4xl font-bold text-center">
+        As Recognised By
       </h1>
       <div className="flex gap-2 sm:gap-4 md:gap-8 justify-center w-100 ">
         <img className="w-[17%] md:w-[15%] h-10 sm:h-12 md:h-20 " src={imageOne} alt="Care India"></img>
