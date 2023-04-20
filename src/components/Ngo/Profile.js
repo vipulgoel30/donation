@@ -181,7 +181,7 @@ function Profile(props) {
                     Update is not possible in mobile browser
                   </h1>
                   <h1 className="hidden md:block font-light tracking-widest text-xs">
-                    Update you profile and personnel details
+                    Update your profile and personal details
                   </h1>
                 </div>
               </div>

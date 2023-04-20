@@ -240,12 +240,14 @@ input[type="number"] {
   background-image: url("./components/Ngo/bgimage.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 }
 
 .backgroundImageUser {
   background-image: url("./components/User/userImage.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 }
 
 @tailwind utilities;
