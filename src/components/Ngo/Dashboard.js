@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { useDataContext } from "../../context/ContextProvider";
 import { acceptDonation, getAllDonations } from "../../firebase";
 import useAuth from "../../hooks/useAuth";
-import dummyImage from "./../../images/dummy.webp";
+import dummyImage from "./../../images/dummy2.png";
 import { sortEvents } from "../../modules/array";
 import { NotFound } from "../User/NotFound";
 
@@ -91,7 +91,7 @@ const Dashboard = () => {
                     <div className="flex gap-10">
                       <img
                         src={image || dummyImage}
-                        className="w-24 h-24  rounded-full shadow-2xl"
+                        className="w-24 h-24  rounded-full shadow-2xl object-cover"
                       />
                       <div className="flex flex-col gap-2 text-black">
                         <div className="text-2xl tracking-widest text-neutral-500 font-light">

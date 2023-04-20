@@ -185,7 +185,7 @@
 
 import { useState } from "react";
 import Logo from "../Logo";
-import dummyImage from "./../../images/dummy.webp";
+import dummyImage from "./../../images/dummy2.png";
 import { Link, useLocation } from "react-router-dom";
 import { HiMenu } from "react-icons/hi";
 import { IoMdClose } from "react-icons/io";
@@ -239,7 +239,7 @@ export default function NavBarNgo() {
           <Link to="/ngo/profile">
             <img
               src={data?.image || dummyImage}
-              className="w-12 h-12 rounded-full "
+              className="w-12 h-12 rounded-full object-cover"
               alt="Ngo logo"
             ></img>
           </Link>

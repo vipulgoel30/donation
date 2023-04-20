@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { setNgoData } from "../../firebase";
 import useAuth from "../../hooks/useAuth";
 // import LogOut from "./LogOut";
-import dummyImage from "../../images/dummy.webp";
+import dummyImage from "../../images/dummy2.png";
 import bgImage from "./bg-image.jpg";
 import { toast } from "react-toastify";
 import { useDataContext } from "../../context/ContextProvider";
@@ -168,7 +168,7 @@ function Profile(props) {
                 <img
                   src={data?.image || dummyImage}
                   alt="Ngo Logo"
-                  className="absolute rounded-full w-28 h-28 mt-4 left-72"
+                  className="absolute rounded-full w-28 h-28 mt-4 left-72 object-cover"
                 />
                 <div className="absolute left-[30rem] mt-20 flex flex-col gap-1">
                   <h1 className="text-xl sm:text-2xl font-bold ">

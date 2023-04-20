@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useRef, useState, useEffect } from "react";
 import { getAllEvents } from "../../firebase";
-import dummyImage from "../../images/dummy.webp";
+import dummyImage from "../../images/dummy2.png";
 import { setEvent } from "../../firebase";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
@@ -170,7 +170,7 @@ export default function Posts() {
                               (eventType === "our" ? data?.image : ngoImage) ||
                               dummyImage
                             }
-                            className="rounded-full w-16 h-16"
+                            className="rounded-full w-16 h-16 object-cover"
                           />
                           <div className="flex flex-col p-1 gap-.5">
                             <div className="text-2xl text-gray-800 font-extralight">
@@ -272,7 +272,7 @@ export default function Posts() {
             <div className="flex flex-col justify-center items-center w-full p-6 pt-12 rounded-2xl shadow-2xl gap-4 relative">
               <img
                 src={data?.image || dummyImage}
-                className="rounded-full shadow-xl w-20 h-20"
+                className="rounded-full shadow-xl w-20 h-20 object-cover"
               />
               <div className="text-2xl font-medium text-gray-700">
                 {data?.name}
