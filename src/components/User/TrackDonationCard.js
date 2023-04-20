@@ -34,7 +34,7 @@ export default function TrackDonationCard({ id, status, description, ngoid, date
       className={`border-2 border-${color}-400 bg-white rounded-3xl px-12 py-4 flex flex-col gap-4  w-full`}
     >
       <div className="flex flex-col sm:flex-row  ">
-        <div className={`mr-5 font-bold text-2xl font-mono text-${color}-400`}>
+        <div className={`mr-5 font-bold text-2xl text-${color}-400`}>
           Status
         </div>
         <div className="text-xl">{capitalise(status)}</div>
@@ -49,7 +49,7 @@ export default function TrackDonationCard({ id, status, description, ngoid, date
         </Link>
       </div>
       <div className="flex flex-col sm:flex-row  gap-4">
-        <div className={` font-bold text-xl font-mono text-${color}-400`}>
+        <div className={` font-bold text-xl text-${color}-400`}>
           Description
         </div>
         <div className="text-xl">{capitalise(description)}</div>
@@ -74,7 +74,7 @@ export default function TrackDonationCard({ id, status, description, ngoid, date
       </form>
 
       <div className=" flex items-center gap-3">
-        <div className={`text-${color}-400 font-mono text-xl`}>
+        <div className={`text-${color}-400 text-xl`}>
           {dropDown === "up" ? "More Details" : "Less Details"}
         </div>
         <div className={`${dropDown === "up" ? "block" : "hidden"}`}>
@@ -120,7 +120,7 @@ export default function TrackDonationCard({ id, status, description, ngoid, date
         className={` ${dropDown === "up" ? "hidden" : ""} flex gap-4 flex-col`}
       >
         <div className={`flex flex-col sm:flex-row gap-4 `}>
-          <div className={` font-bold text-xl font-mono text-${color}-400`}>
+          <div className={` font-bold text-xl text-${color}-400`}>
             Date
           </div>
           <div className="text-lg">{new Date(date).toLocaleString()}</div>

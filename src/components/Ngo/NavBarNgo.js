@@ -217,7 +217,7 @@ export default function NavBarNgo() {
             <Logo dimension={2} />
 
             <h1
-              className="text-4xl font-mono italic text-transparent bg-clip-text bg-gradient-to-t from-colorPrimary to-colorSecondary hidden lg:block"
+              className="text-4xl italic text-transparent bg-clip-text bg-gradient-to-t from-colorPrimary to-colorSecondary hidden lg:block"
               style={{
                 wordSpacing: ".1rem",
                 letterSpacing: ".1rem",
