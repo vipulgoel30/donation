@@ -31,17 +31,17 @@ const MakeDonations = () => {
   return (
     <>
       <div className="flex items-center justify-center w-full min-h-[90vh] h-fit bg-gradient-to-r from-gradient1a to-gradient1b">
-        <div className="p-8  flex justify-center">
+        <div className="p-4  flex justify-center">
           <div className="flex flex-col md:flex-row mx-auto justify-center items-center">
-            <div className="p-2 w-1/3 ">
+            <div className=" w-2/3 md:w-1/3 ">
               <img className="rounded-full" src={about1} alt="" />
             </div>
-            <div className="p-8 flex flex-col gap-4 items-center">
-              <h1 className="font-bold text-xl m-1">
+            <div className="p-2 flex flex-col gap-4 items-center">
+              <h1 className="font-bold text-xl m-1 text-center">
                 Please provide the following information for donations:
               </h1>
-              <form onSubmit={submit}>
-                <div className="flex flex-col gap-2">
+              <form onSubmit={submit} className="w-full">
+                <div className="w-full flex flex-col gap-2">
                   <div className="w-full flex flex-col md:flex-row gap-4">
                     <input
                       className={`w-full px-4 py-2 text-lg shadow-[0px_0px_2px_rgba(0,0,0,.2)]  bg-gray-100 rounded-lg outline-4 outline-gradient1b`}
@@ -92,6 +92,7 @@ const MakeDonations = () => {
                       className={`w-full px-4 py-2 text-lg shadow-[0px_0px_2px_rgba(0,0,0,.2)]  bg-gray-100 rounded-lg outline-4 outline-gradient1b`}
                       type="text"
                       placeholder="Description"
+                      ref={description}
                       required
                     ></textarea>
                   </div>

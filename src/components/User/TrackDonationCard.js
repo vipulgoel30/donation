@@ -6,32 +6,44 @@ import { useDataContext } from "../../context/ContextProvider";
 import { completeDonation, getNgoData } from "../../firebase";
 import useAuth from "../../hooks/useAuth";
 
-export default function TrackDonationCard({ id, status, description, ngoid, date }) {
+export default function TrackDonationCard({
+  id,
+  status,
+  description,
+  ngoid,
+  date,
+}) {
   function capitalise(value) {
     return value?.[0]?.toUpperCase() + value?.substring(1);
   }
-  const [color] = useState(status === "active" ? "red" : "green");
+  const [color] = useState(status === "accepted" ? "green" : "red");
   const [dropDown, setDropDown] = useState("up");
-  const [data, setData] = useState()
-  const { user } = useAuth()
-  const password = useRef()
-  const { setUserDataUpdated } = useDataContext()
+  const [data, setData] = useState();
+  const { user } = useAuth();
+  const password = useRef();
+  const { setUserDataUpdated } = useDataContext();
 
   useEffect(() => {
-    getNgoData(ngoid).then(({ success, data }) => { if (success) setData(data) })
-  }, [])
+    getNgoData(ngoid).then(({ success, data }) => {
+      if (success) setData(data);
+    });
+  }, []);
 
   async function submit(event) {
-    event.preventDefault()
-    const { success, error } = await completeDonation(user, id, password.current.value)
-    if (!success) return toast.error(error)
-    setUserDataUpdated(true)
-    toast.success('Donation completed')
+    event.preventDefault();
+    const { success, error } = await completeDonation(
+      user,
+      id,
+      password.current.value
+    );
+    if (!success) return toast.error(error);
+    setUserDataUpdated(true);
+    toast.success("Donation completed");
   }
 
   return (
     <div
-      className={`border-2 border-${color}-400 bg-white rounded-3xl px-12 py-4 flex flex-col gap-4  w-full`}
+      className={`border-2  border-${color}-400 bg-white rounded-3xl px-12 py-4 flex flex-col gap-4  w-full`}
     >
       <div className="flex flex-col sm:flex-row  ">
         <div className={`mr-5 font-bold text-2xl text-${color}-400`}>
@@ -44,8 +56,11 @@ export default function TrackDonationCard({ id, status, description, ngoid, date
           Accepting NGO
         </div>
 
-        <Link to={ngoid ? `/ngo/${ngoid}` : '/user/donations'} className="text-2xl text-gray-600 ">
-          {capitalise(data?.name || 'NA')}
+        <Link
+          to={ngoid ? `/ngo/${ngoid}` : "/user/donations"}
+          className="text-2xl text-gray-600 "
+        >
+          {capitalise(data?.name || "NA")}
         </Link>
       </div>
       <div className="flex flex-col sm:flex-row  gap-4">
@@ -54,9 +69,11 @@ export default function TrackDonationCard({ id, status, description, ngoid, date
         </div>
         <div className="text-xl">{capitalise(description)}</div>
       </div>
-      <form onSubmit={submit}
-        className={`flex flex-col sm:flex-row sm:items-center gap-6 mt-2  ${status === "active" ? "" : "hidden"
-          }`}
+      <form
+        onSubmit={submit}
+        className={`flex flex-col sm:flex-row sm:items-center gap-6 mt-2  ${
+          status === "active" ? "" : "hidden"
+        }`}
       >
         <h1 className={`text-${color}-400 text-2xl font-bold`}>OTP</h1>
         <div className="flex flex-col sm:flex-row w-full gap-10 ">
@@ -120,9 +137,7 @@ export default function TrackDonationCard({ id, status, description, ngoid, date
         className={` ${dropDown === "up" ? "hidden" : ""} flex gap-4 flex-col`}
       >
         <div className={`flex flex-col sm:flex-row gap-4 `}>
-          <div className={` font-bold text-xl text-${color}-400`}>
-            Date
-          </div>
+          <div className={` font-bold text-xl text-${color}-400`}>Date</div>
           <div className="text-lg">{new Date(date).toLocaleString()}</div>
         </div>
         {/* <div className="flex flex-col sm:flex-row gap-4 ">
