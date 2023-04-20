@@ -7,7 +7,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import NavBarAllNgo from "./components/Ngo/AllNgo/NavBarAllNgo";
 import useAuth from "./hooks/useAuth";
-
+import UserProfile from "./components/User/UserProfile";
 const Landing = lazy(() => import("./components/Landing"));
 const Navbar = lazy(() => import("./components/User/Navbar"));
 const Register = lazy(() => import("./components/Register"));
@@ -22,26 +22,26 @@ const DashBoardMoreDetails = lazy(() =>
 );
 
 const MakeDonations = lazy(() => import("./components/User/MakeDonations"));
-const UserProfile = lazy(() => import("./components/User/UserProfile"));
 const UserHome = lazy(() => import("./components/User/UserHome"));
 const Money = lazy(() => import("./components/User/Money"));
 const Allngo = lazy(() => import("./components/Ngo/AllNgo/Allngo"));
 const TrackDonation = lazy(() => import("./components/User/TrackDonation"));
+
 function App() {
   const location = useLocation();
-  const {user,ngo}=  useAuth()
+  const { user, ngo } = useAuth();
 
   return (
     <Suspense fallback={<Loader dimension={10} />}>
       <ContextProvider>
         {location.pathname.startsWith("/user") && user && <Navbar />}
-        {location.pathname.startsWith("/ngo") &&  ngo && <NavBarNgo />}
-        {location.pathname.match('/ngos')&&<NavBarAllNgo/>}
-      
+        {location.pathname.startsWith("/ngo") && ngo && <NavBarNgo />}
+        {location.pathname.match("/ngos") && <NavBarAllNgo />}
+
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/about" element={<About />} />
-          <Route path="/ngos" element={<Allngo/>}></Route>
+          <Route path="/ngos" element={<Allngo />}></Route>
           <Route path="/user/signup" element={<Register type="User" />} />
           <Route path="/user/login" element={<Login type="User" />} />
           <Route path="/user/donate" element={<MakeDonations />} />

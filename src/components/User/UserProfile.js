@@ -9,7 +9,7 @@ import { useDataContext } from "../../context/ContextProvider";
 import { logout } from "../../firebase";
 import logOutIcon from "./../../images/confirmation.webp";
 
-export function UserProfile() {
+export default function UserProfile() {
   const [edit, setEdit] = useState(true);
   const [page, setpage] = useState("profile");
   const [password, setPassword] = useState("");
