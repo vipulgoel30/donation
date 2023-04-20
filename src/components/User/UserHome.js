@@ -119,7 +119,7 @@ export default function UserHome() {
                           className="w-full h-64"
                         ></img>
                       </div>
-                      <div className="font-semibold text-2xl pl-3 font-mono">
+                      <div className="font-semibold text-2xl pl-3 ">
                         {title}
                       </div>
                       <div className="font-light leading-7 -mt-3">

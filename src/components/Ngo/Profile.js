@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { setNgoData } from "../../firebase";
 import useAuth from "../../hooks/useAuth";
-import LogOut from "./LogOut";
+// import LogOut from "./LogOut";
 import dummyImage from "../../images/dummy.webp";
 import bgImage from "./bg-image.jpg";
 import { toast } from "react-toastify";
@@ -61,9 +61,11 @@ function Profile(props) {
     window.location.reload();
     // toast.success("Profile updated successfully!");
   }
+
   function hiddenModal() {
     setpage("profile");
   }
+
   useEffect(() => {
     if (
       password === confirmPassword &&

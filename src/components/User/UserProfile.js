@@ -6,11 +6,10 @@ import dummyImage from "../../images/dummy.webp";
 import bgImage from "./userImage.jpg";
 import { toast } from "react-toastify";
 import { useDataContext } from "../../context/ContextProvider";
-import LogOut from "../Ngo/LogOut";
+import { logout } from "../../firebase";
+import logOutIcon from "./../../images/confirmation.webp";
 
-export default function Profile() {
-  document.querySelector("body").style.overflowX = "hidden";
-
+export function UserProfile() {
   const [edit, setEdit] = useState(true);
   const [page, setpage] = useState("profile");
   const [password, setPassword] = useState("");
@@ -24,6 +23,16 @@ export default function Profile() {
   const mobile = useRef();
   const address = useRef();
   const pincode = useRef();
+
+  async function handleLogout() {
+    const { success } = await logout();
+    if (!success) return toast.error("Some error occured...");
+    toast.success("Logged out successfully");
+  }
+
+  function hiddenModal() {
+    setpage("profile");
+  }
 
   async function submit(event) {
     event.preventDefault();
@@ -56,7 +65,40 @@ export default function Profile() {
   return (
     <>
       <div className={`${page === "logout" ? "" : "hidden"}`}>
-        <LogOut />
+        <div className={`relative  logoutPanel z-10  `}>
+          <div
+            className={`fixed top-1/2 left-1/2  z-10 -translate-x-1/2 -translate-y-1/2 `}
+          >
+            <div className="bg-white flex flex-col gap-6  items-center px-16 py-8 rounded-3xl border-t-8 border-t-green-400 ">
+              <img
+                src={logOutIcon}
+                alt="Log out"
+                className="w-24 animate-[spin_1s_ease-in-out]"
+              />
+              <h1 className="text-xl tracking-wide">
+                Are you sure you want to logout
+              </h1>
+              <div className="flex gap-8 ">
+                <button
+                  className="tracking-wider rounded-2xl text-xl font-semibold bg-[#7ed56f] px-6 py-2 text-gray-100 transition-all duration-200 hover:scale-105 hover:-translate-y-1 ngo-logout-cancel"
+                  onClick={hiddenModal}
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleLogout}
+                  className="tracking-wider rounded-2xl text-xl font-semibold bg-[#28b485]  px-6 py-2 text-white transition-all duration-200 hover:scale-105 hover:-translate-y-1 ngo-logout-confirm"
+                >
+                  Confirm
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            className="fixed top-0 left-0 w-screen h-screen bg-black/50 overlay z-5 "
+            onClick={hiddenModal}
+          ></div>
+        </div>
       </div>
       <div className="mb-10">
         <div className="max-w-7xl  2xl:mx-auto mx-12 mt-8 ">
@@ -75,9 +117,7 @@ export default function Profile() {
               </div>
               <div
                 className={`hidden sm:block text-xl cursor-pointer ${
-                  page === "password"
-                    ? "font-bold text-2xl"
-                    : ""
+                  page === "password" ? "font-bold text-2xl" : ""
                 }`}
                 onClick={() => {
                   setpage("password");
@@ -97,11 +137,15 @@ export default function Profile() {
               </div>
             </div>
             <div className="w-full -mt-12">
-            <img className="h-36 rounded-t-3xl w-full bg-gray-200 object-cover" src={bgImage} alt="" />
-            <div className="">
+              <img
+                className="h-36 rounded-t-3xl w-full bg-gray-200 object-cover"
+                src={bgImage}
+                alt=""
+              />
+              <div className="">
                 <img
                   src={data?.image || dummyImage}
-                  alt="Ngo Logo"
+                  alt="User Logo"
                   className="absolute rounded-full w-28 h-28 mt-4 left-72"
                 />
                 <div className="absolute left-[30rem] mt-20 flex flex-col gap-1">
