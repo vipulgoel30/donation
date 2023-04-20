@@ -166,7 +166,7 @@ function Profile(props) {
             </div>
             <div className="w-full -mt-12">
               <div
-                className={`h-36 mt-4 rounded-tl-3xl w-full backgroundImage relative `}
+                className={`h-36 mt-4 rounded-tl-3xl w-full backgroundImageNgo relative `}
               >
                 <img
                   src={data?.image || dummyImage}
