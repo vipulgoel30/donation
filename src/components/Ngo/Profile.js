@@ -4,7 +4,7 @@ import { setNgoData } from "../../firebase";
 import useAuth from "../../hooks/useAuth";
 // import LogOut from "./LogOut";
 import dummyImage from "../../images/dummy2.png";
-import bgImage from "./bg-image.jpg";
+// import bgImage from "./bg-image.jpg";
 import { toast } from "react-toastify";
 import { useDataContext } from "../../context/ContextProvider";
 import { logout } from "../../firebase";
@@ -126,10 +126,10 @@ function Profile(props) {
             Settings
           </h1>
           <div className="flex flex-col sm:flex-row gap-12 sm:gap-28 mt-8">
-            <div className="flex flex-row sm:flex-col  gap-5 ">
+            <div className="flex flex-row sm:flex-col  gap-5 tracking-wider">
               <div
                 className={`text-xl cursor-pointer ${
-                  page === "profile" ? "font-bold text-2xl" : ""
+                  page === "profile" ? "font-bold tracking-widest text-2xl" : ""
                 }`}
                 onClick={() => {
                   setpage("profile");
@@ -140,7 +140,11 @@ function Profile(props) {
               <div
                 className={`hidden sm:block text-xl cursor-pointer ${
                   props.type === "public" ? "hidden" : ""
-                } ${page === "password" ? "font-bold text-2xl" : ""}`}
+                } ${
+                  page === "password"
+                    ? "font-bold tracking-widest text-2xl"
+                    : ""
+                }`}
                 onClick={() => {
                   setpage("password");
                 }}
@@ -150,7 +154,9 @@ function Profile(props) {
               <div
                 className={`text-xl cursor-pointer ${
                   props.type === "public" ? "hidden" : ""
-                } ${page === "logout" ? "font-bold text-2xl" : ""}`}
+                } ${
+                  page === "logout" ? "font-bold tracking-widest text-2xl" : ""
+                }`}
                 onClick={() => {
                   setpage("logout");
                 }}
@@ -159,26 +165,23 @@ function Profile(props) {
               </div>
             </div>
             <div className="w-full -mt-12">
-              <img
-                className="h-36 rounded-t-3xl w-full bg-gray-200 object-cover"
-                src={bgImage}
-                alt=""
-              />
-              <div className="">
+              <div
+                className={`h-36 mt-4 rounded-tl-3xl w-full backgroundImage relative `}
+              >
                 <img
                   src={data?.image || dummyImage}
                   alt="Ngo Logo"
-                  className="absolute rounded-full w-28 h-28 mt-4 left-72 object-cover"
-                />
-                <div className="absolute left-[30rem] mt-20 flex flex-col gap-1">
-                  <h1 className="text-xl sm:text-2xl font-bold ">
+                  className="absolute rounded-full w-28 h-28 top-[85%] left-8"
+                ></img>
+                <div className="absolute top-full left-44 mt-4 flex flex-col gap-1">
+                  <h1 className="text-xl sm:text-2xl font-bold tracking-wide">
                     {data?.name}
                   </h1>
-                  <h1 className="sm:hidden  font-light text-sm">
+                  <h1 className="sm:hidden  font-light tracking-widest text-xs">
                     Update is not possible in mobile browser
                   </h1>
-                  <h1 className="hidden md:block font-light justify-items-end lg:ml-80 text-xl">
-                    Update your profile and personal details
+                  <h1 className="hidden md:block font-light tracking-widest text-xs">
+                    Update you profile and personnel details
                   </h1>
                 </div>
               </div>

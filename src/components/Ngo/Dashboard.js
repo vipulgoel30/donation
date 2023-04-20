@@ -37,10 +37,10 @@ const Dashboard = () => {
     <>
       {!donations && dashboardAnimation === "hidden" && (
         <div className="w-screen h-screen flex justify-center items-center flex-col">
-          <p className="text-center text-2xl text-slate-700 tracking-widest">
-            No donation found check back later!!!
-          </p>
           <NotFound />
+          <p className="text-center text-2xl text-slate-700 tracking-widest">
+            No donation found at your pin code!!!
+          </p>
         </div>
       )}
       {/* Animation of dahboard for showing palete */}
