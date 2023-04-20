@@ -76,10 +76,10 @@ export default function UserHome() {
             </div>
             {events.length === 0 && (
               <div className="">
+                <NotFound />
                 <p className="text-center text-2xl text-slate-700 tracking-widest">
                   No event found
                 </p>
-                <NotFound />
               </div>
             )}
             {events &&
