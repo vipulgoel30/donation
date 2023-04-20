@@ -29,11 +29,7 @@ export default function NavBarLanding() {
             <Logo dimension={2} />
 
             <h1
-              className="text-4xl italic text-transparent bg-clip-text bg-gradient-to-t from-colorPrimary to-colorSecondary hidden lg:block"
-              style={{
-                wordSpacing: ".1rem",
-                letterSpacing: ".1rem",
-              }}
+              className="text-4xl text-transparent bg-clip-text bg-gradient-to-t from-colorPrimary to-colorSecondary hidden lg:block"
             >
               DoNation
             </h1>

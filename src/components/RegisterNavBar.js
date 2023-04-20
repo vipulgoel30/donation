@@ -14,10 +14,7 @@ export default function RegisterNavBar() {
                     <div className="flex items-center gap-2 sm:gap-3 ">
 
                         <Logo dimension={2} />
-
-                        <p className="font-bold text-xl hidden xxsm:block">
-                            DoNation
-                        </p>
+                        <h1 className="text-4xl text-transparent bg-clip-text bg-gradient-to-t from-colorPrimary to-colorSecondary hidden xsm:block"> DoNation</h1>
                     </div>
                 </Link>
 
