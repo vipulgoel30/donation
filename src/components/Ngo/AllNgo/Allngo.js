@@ -86,7 +86,7 @@ const Allngo = () => {
               <div className="flex gap-10">
                 <img
                   src={image || dummyImage}
-                  className="w-24 h-24  rounded-full shadow-2xl"
+                  className="w-24 h-24  rounded-full shadow-2xl object-cover"
                 />
                 <div className="flex flex-col gap-1">
                   <div className="text-2xl tracking-widest text-neutral-500 font-light">
