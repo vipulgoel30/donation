@@ -1,4 +1,4 @@
-# DoNation - "Donate today to change lives and give hope"
+# DoNation - "Donate for a good cause"
 
 DoNation was developed with the intention of making it simple for anyone to contribute to the nation's quality and equal chances for children's well-being. Additionally, we want to raise awareness of the value of children's wellbeing. We experience empathy and compassion when we see children suffering, which motivates us to build a contribution platform and assist those kids who are in need.
 
