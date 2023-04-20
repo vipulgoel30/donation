@@ -1,12 +1,15 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
+import { getAllEvents } from "../../firebase";
 import dummyImage from "../../images/dummy.webp";
 import { setEvent } from "../../firebase";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
+import { AiOutlineSearch } from "react-icons/ai";
 import { useDataContext } from "../../context/ContextProvider";
 import { relativeTime } from "../../modules/time";
 import { sortEvents } from "../../modules/array";
+import { NotFound } from "./../User/NotFound";
 
 export default function Posts() {
   const [post, setPost] = useState("flex");
@@ -15,7 +18,21 @@ export default function Posts() {
   const image = useRef();
   const url = useRef();
   const { ngo } = useAuth();
+  const [eventType, setEventType] = useState("all");
+  const [events, setEvents] = useState([]);
+  const [fetchedEvents, setFetchedEvents] = useState([]);
   const { setNgoDataUpdated, ngoData: data } = useDataContext();
+  const eventSearchInput = useRef();
+  useEffect(() => {
+    getAllEvents().then(({ success, events }) => {
+      if (success) {
+        console.log("Happened");
+        console.log(events);
+        setEvents(events);
+        setFetchedEvents(events);
+      }
+    });
+  }, []);
 
   async function submit(event) {
     event.preventDefault();
@@ -30,6 +47,24 @@ export default function Posts() {
     setNgoDataUpdated(true);
     toast.success("New event added!");
   }
+
+  const searchEventHandler = () => {
+    setEventType("all");
+    const value = eventSearchInput.current.value;
+    const tempEvents = [];
+    console.log(fetchedEvents);
+    fetchedEvents.forEach((event) => {
+      if (
+        Object.values(event)
+          .join("")
+          .toLowerCase()
+          .includes(value.toLowerCase())
+      ) {
+        tempEvents.push(event);
+      }
+    });
+    setEvents(tempEvents);
+  };
 
   return (
     <>
@@ -61,49 +96,102 @@ export default function Posts() {
         </svg>
       </div>
 
-      <div className="pt-32 sm:pt-10 mb-10 max-w-6xl px-8 xl:mx-auto  w-full ">
+      <div className="pt-12 sm:pt-10 mb-10 max-w-6xl px-8 xl:mx-auto  w-full ">
         <div className="flex gap-12 w-full ">
           <div className={` flex-col gap-12 w-full sm:w-2/3 ${post}`}>
-            <div className="flex sm:hidden gap-4 ">
-              <button className="shadow-lg shadow-slate-300 rounded-xl px-10 py-2">
+            <div className="flex flex-col sm:hidden gap-4 justify-evenly items-center ">
+              <div
+                className="rounded-xl whitespace-pre-wrap px-8 py-2 w-full  text-lg bg-white shadow-lg shadow-slate-300 hover:shadow-md hover:-translate-y-0.5 active:scale-95 transition-all duration-300 cursor-pointer"
+                style={{
+                  backfaceVisibility: "hidden",
+                }}
+                onClick={() => {
+                  setEvents(fetchedEvents);
+                }}
+              >
+                All events
+              </div>
+              <div
+                className="rounded-xl whitespace-pre-wrap px-8 py-2 w-full  text-lg bg-white shadow-lg shadow-slate-300 hover:shadow-md hover:-translate-y-0.5 active:scale-95 transition-all duration-300 cursor-pointer"
+                style={{
+                  backfaceVisibility: "hidden",
+                }}
+                onClick={() => {
+                  setEvents(data?.events || []);
+                  setEventType("our");
+                }}
+              >
                 Our events
-              </button>
-              <button className="shadow-lg shadow-slate-300 rounded-xl px-10 py-2">
-                Recent events
-              </button>
-            </div>
-            {data?.events
-              ?.sort(sortEvents)
-              .map(({ title, description, image, url, date }) => (
+              </div>
+              <div className="flex gap-2 items-center w-full">
+                <input
+                  className={`w-full px-6 py-2 text-lg border-2 border-slate-400  rounded-lg outline-4 outline-gradient1b transition-all duration-300`}
+                  type="text"
+                  placeholder="Search Events"
+                  ref={eventSearchInput}
+                ></input>
                 <div
-                  key={date}
-                  className="flex flex-col px-8 py-4  rounded-3xl shadow-xl w-full gap-6 "
+                  className="text-2xl hover:scale-110 transition-all duration-200 active:scale-95 cursor-pointer"
+                  onClick={searchEventHandler}
                 >
-                  <a href={url} target="_blank" rel="noreferrer">
-                    <div className="flex gap-6 items-center">
-                      <img
-                        src={data?.image || dummyImage}
-                        className="rounded-full w-16 h-16"
-                      />
-                      <div className="flex flex-col p-1 gap-.5">
-                        <div className="text-2xl text-gray-800 font-extralight">
-                          {data?.name}
+                  <AiOutlineSearch />
+                </div>
+              </div>
+            </div>
+            {events.length === 0 && (
+              <div className="">
+                <p className="text-center text-2xl text-slate-700 tracking-widest">
+                  No event found
+                </p>
+                <NotFound />
+              </div>
+            )}
+            {events &&
+              events
+                ?.sort(sortEvents)
+                .map(
+                  ({
+                    title,
+                    description,
+                    image,
+                    url,
+                    date,
+                    ngoImage,
+                    name,
+                  }) => (
+                    <div
+                      key={date}
+                      className="flex flex-col px-8 py-4  rounded-3xl shadow-xl w-full gap-6 "
+                    >
+                      <a href={url} target="_blank" rel="noreferrer">
+                        <div className="flex gap-6 items-center">
+                          <img
+                            src={
+                              (eventType === "our" ? data?.image : ngoImage) ||
+                              dummyImage
+                            }
+                            className="rounded-full w-16 h-16"
+                          />
+                          <div className="flex flex-col p-1 gap-.5">
+                            <div className="text-2xl text-gray-800 font-extralight">
+                              {eventType === "our" ? data?.name : name}
+                            </div>
+                            <div className="text-sm text-gray-500">
+                              {relativeTime(date)}
+                            </div>
+                          </div>
                         </div>
-                        <div className="text-sm text-gray-500">
-                          {relativeTime(date)}
+                        <div>
+                          <img src={image} className="w-full h-64"></img>
                         </div>
+                      </a>
+                      <div className="font-semibold text-2xl pl-3">{title}</div>
+                      <div className="font-light leading-7 -mt-3">
+                        {description}
                       </div>
                     </div>
-                    <div>
-                      <img src={image} className="w-full h-64"></img>
-                    </div>
-                  </a>
-                  <div className="font-semibold text-2xl pl-3">{title}</div>
-                  <div className="font-light leading-7 -mt-3">
-                    {description}
-                  </div>
-                </div>
-              ))}
+                  )
+                )}
           </div>
           <div
             className={`w-full sm:w-2/3 shadow-[-4px_0px_24px_rgba(0,0,0,.2)]  shadow-slate-300 rounded-3xl px-8 py-8 pt-16  flex-col gap-8 text-gray-600 relative ${
@@ -172,7 +260,7 @@ export default function Posts() {
               </div>
               <button
                 type="submit"
-                //   className="bg-gradient-to-r from-gradient1a to-gradient1b py-3 text-3xl rounded-3xl hover:-translate-y-1 transition-all duration-200 hover:scale-[1.01] "
+                //   className="bg-gradient-to-r from-gradient1a to-gradient1b py-3 text-3xl rounded-3xl hover:-translate-y-0.5 transition-all duration-200 hover:scale-[1.01] "
                 // >
                 className="font-semibold inline-block bg-gradient-to-r from-gradient1a to-gradient1b border rounded-lg px-4 py-2 m-2"
               >
@@ -192,20 +280,41 @@ export default function Posts() {
             </div>
             <div className="flex flex-col gap-6">
               <div
-                className="rounded-xl px-8 py-2  text-lg bg-white shadow-lg shadow-slate-200 hover:shadow-md hover:-translate-y-1 transition-all duration-300"
+                className="rounded-xl px-8 py-2  text-lg bg-white shadow-lg shadow-slate-200 hover:shadow-md hover:-translate-y-0.5 active:scale-95 transition-all duration-300 cursor-pointer"
                 style={{
                   backfaceVisibility: "hidden",
+                }}
+                onClick={() => {
+                  setEvents(fetchedEvents);
+                }}
+              >
+                All events
+              </div>
+              <div
+                className="rounded-xl px-8 py-2  text-lg bg-white shadow-lg shadow-slate-200 hover:shadow-md hover:-translate-y-0.5 active:scale-95 transition-all duration-300 cursor-pointer"
+                style={{
+                  backfaceVisibility: "hidden",
+                }}
+                onClick={() => {
+                  setEvents(data?.events || []);
+                  setEventType("our");
                 }}
               >
                 Our events
               </div>
-              <div
-                className="rounded-xl px-8 py-2  text-lg bg-white shadow-lg shadow-slate-200  hover:shadow-md hover:-translate-y-1 transition-all duration-300"
-                style={{
-                  backfaceVisibility: "hidden",
-                }}
-              >
-                Recent events
+              <div className="flex gap-2 items-center">
+                <input
+                  className={`w-full px-6 py-2 text-lg border-2 border-slate-400  rounded-lg outline-4 outline-gradient1b transition-all duration-300`}
+                  type="text"
+                  placeholder="Search Events"
+                  ref={eventSearchInput}
+                ></input>
+                <div
+                  className="text-2xl hover:scale-110 transition-all duration-200 active:scale-95 cursor-pointer"
+                  onClick={searchEventHandler}
+                >
+                  <AiOutlineSearch />
+                </div>
               </div>
             </div>
           </div>
