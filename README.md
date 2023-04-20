@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+# DoNation - "Donate today to change lives and give hope"
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+DoNation was developed with the intention of making it simple for anyone to contribute to the nation's quality and equal chances for children's well-being. Additionally, we want to raise awareness of the value of children's wellbeing. We experience empathy and compassion when we see children suffering, which motivates us to build a contribution platform and assist those kids who are in need.
 
-## Available Scripts
+### What it does
+We at DoNation offer a platform for individuals and organizations to donate money for children's education that improves their problem-solving, communication, and other abilities that prepare them for the future. On our site, there are two ways to use our platform: as a donor or as a nonprofit organization. Through sponsorship, we are able to encourage the kids to go to school and teach them some fundamental life skills.
 
-In the project directory, you can run:
+### How we built it
+To develop the frontend of our website, We utilized the framework ReactJS and combined it with Tailwind CSS to create a clean and intuitive interface. Using Vercel , We were able to quickly set up a small web server to host our website. For the Backend Purpose of our website we've used Firebase. Finally, We connect it with our frontend using firebase method. 
+- React JS
+- Tailwind CSS
+- Firebase
+- Vercel
 
-### `npm start`
+### Testing credentials
+**User Login**: Email : shivansharora@gmail.com   Password : vipul123 <br/>
+**NGO Login**: Email : vipul@gmail.com   Password : vipul123
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Challenges we ran into
+Since this was our first offline hackathon, we were quite enthusiastic about it and eager to create something that addressed a real-world issue. Our team has been working quite hard on this hackathon for the last 1.5 days. We encountered some difficulties, such as the need to work continuously with few pauses. Since we were participating in a hackathon, it is inevitable that we would encounter certain technical problems and defects in our code. Fortunately, our team was able to resolve all of these concerns.
 
-### `npm test`
+### Accomplishments that we're proud of
+We are incredibly proud of what we were able to achieve during the hackathon. Despite facing some challenges, such as limited time and working with unfamiliar technologies, we managed to code a fully functional website .
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+We gained some valuable experience and knowledge from the hackathon, learning to use new technologies that we had previously only had limited exposure to. Overcoming obstacles such as limited time and competing priorities taught us the importance of effective time management and the need to prioritize tasks.
 
-### `npm run build`
+This experience has given us a great sense of accomplishment and has motivated us to continue exploring new technologies and improving our skills. The hackathon also provided us with an opportunity to connect with like-minded individuals and collaborate with others, which was a great learning experience in itself. Overall, we were thrilled with what we were able to achieve and grateful for the opportunity to participate in the hackathon.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### What we learned
+We were able to comprehend and examine the state of children's education in our nation while we built this platform. We learned about some incredible technologies, such as Firebase, Vercel, etc., as this was our first offline hackathon. We used several new tools and techniques and got some useful experience. We are eager to continue honing our web development talents.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### What's next for DoNation
+We came to the realization that there is always room for expansion and development when we thought back on our experience with this project. We'd like to completely deploy the delivery partners feature. Users would be able to communicate with one another, exchange concepts, and take part in conversations about how to educate kids. In addition, before delivering NGOs instructions, we would like to have them verified. In order to make transactions simple and practical, we also wish to incorporate the Stripe payment gateway.
