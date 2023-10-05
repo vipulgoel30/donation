@@ -5,7 +5,7 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, si
 import { generatePassword, randomNumber } from './modules/random';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCOpArtYL2kncWFHx4YSzQPnmk0w4HrxEs",
+    // apiKey: "AIzaSyCOpArtYL2kncWFHx4YSzQPnmk0w4HrxEs",
     authDomain: "do-nation-web.firebaseapp.com",
     projectId: "do-nation-web",
     storageBucket: "do-nation-web.appspot.com",
